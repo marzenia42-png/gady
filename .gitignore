@@ -1,0 +1,13 @@
+﻿*.log
+_review/
+.vscode/
+.idea/
+Thumbs.db
+
+# Dokumenty wewnętrzne — NIE publikować
+ASYSTENT_KROKI*.md
+PLAN_ASYSTENT.md
+PUBLIKACJA.md
+STYL_PALETA.md
+LINKI.md
+render.cjs

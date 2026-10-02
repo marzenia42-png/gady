@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Moje terrarium — {APP}</title>
+<link rel="stylesheet" href="styl.css">
+<style>
+  .subhero{background:var(--forest);color:#eaf1ec;padding:40px 0 34px}
+  .subhero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,42px);margin:10px 0 10px}
+  .subhero p{color:#d7e4da;max-width:70ch;font-size:17px;margin:0}
+  .mt-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;gap:16px;align-items:center;margin-bottom:14px}
+  .mt-card img{width:84px;height:62px;object-fit:cover;border-radius:10px}
+  .mt-card .g{flex:1}
+  .mt-card h3{font-family:var(--serif);margin:0 0 2px;font-size:20px}
+  .mt-card .lat{font-style:italic;color:var(--muted);font-size:14px}
+  .empty{background:var(--paper2);border-radius:14px;padding:30px;text-align:center;color:var(--ink2)}
+  .rm{color:#9b4a2f;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-weight:600}
+</style>
+</head><body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" style="color:inherit"><span class="mk">🦎</span> <span data-app>Terrarium Atlas</span></a>
+  <nav class="menu"><a class="lnk" href="index.html#katalog">Gatunki</a><a class="lnk" href="poradnik.html">Poradniki</a>
+    <a class="lnk" href="rekordy.html">Rekordy</a><a class="lnk" href="quiz.html">Quiz &amp; symulator</a><a class="lnk" href="moje-terrarium.html">Moje terrarium</a><a class="lnk" href="asystent.html">Asystent</a></nav>
+  <span class="sp"></span><a class="search" href="index.html#katalog" style="color:var(--muted)">🔍 Przeglądaj gatunki</a>
+</div></header>
+
+<section class="subhero"><div class="wrap">
+  <div class="kicker light">Twoja lista</div>
+  <h1 class="serif">Moje terrarium</h1>
+  <p>Zapisz gatunki, którymi się opiekujesz lub które Cię interesują. Lista jest zapisywana <b>tylko na tym urządzeniu</b> (bez kont i serwera) — możesz ją w każdej chwili wyczyścić.</p>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div id="lista"></div>
+  <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+    <button class="btn" id="dodajGekon">+ Dodaj gekona lamparciego</button>
+    <button class="btn" id="zapomnij" style="background:#fff;color:#9b4a2f;border:1.5px solid var(--line)">Zapomnij wszystko</button>
+  </div>
+  <p class="src" style="margin-top:14px">Dane zapisywane lokalnie (localStorage). Nic nie wychodzi poza Twoją przeglądarkę.</p>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <div><b data-app>Terrarium Atlas</b><br>Portal przyrodniczy o gadach terrariowych.</div>
+  <div class="credits">Lista „Moje terrarium" zapisywana wyłącznie lokalnie. Zdjęcia: Wikimedia Commons — wykaz w CREDITS.<br>
+    <b style="color:#eaf1ec;font-family:var(--sans)">⚕️ Treści edukacyjne — nie zastępują porady weterynarza.</b></div>
+</div></footer>
+
+<script src="dane.js"></script>
+<script>
+(function(){
+  var KAT = { "gekon-lamparci": { nazwa:"Gekon lamparci", lat:"Eublepharis macularius", foto:"_media/gekon_portret.jpg" } };
+  function get(){ try{ return JSON.parse(localStorage.getItem("ta_myterr")||"[]"); }catch(e){ return []; } }
+  function set(a){ try{ localStorage.setItem("ta_myterr", JSON.stringify(a)); }catch(e){} }
+  function render(){
+    var ids = get(), box = document.getElementById("lista");
+    if(!ids.length){ box.innerHTML = '<div class="empty">Nie dodałeś jeszcze żadnego gatunku. Kliknij „Dodaj gekona lamparciego”, żeby zacząć.</div>'; return; }
+    box.innerHTML = ids.map(function(id){ var k=KAT[id]; if(!k) return "";
+      return '<div class="mt-card"><img src="'+k.foto+'" alt="'+k.nazwa+'"><div class="g"><h3 class="serif">'+k.nazwa+'</h3><div class="lat">'+k.lat+'</div>'+
+        '<a href="gatunek.html" style="font-weight:600">Otwórz kartę →</a></div><button class="rm" data-id="'+id+'">Usuń</button></div>';
+    }).join("");
+    box.querySelectorAll(".rm").forEach(function(b){ b.onclick=function(){ set(get().filter(function(x){return x!==b.getAttribute("data-id");})); render(); }; });
+  }
+  document.getElementById("dodajGekon").onclick=function(){ var a=get(); if(a.indexOf("gekon-lamparci")<0){ a.push("gekon-lamparci"); set(a); } render(); };
+  document.getElementById("zapomnij").onclick=function(){ set([]); render(); };
+  render();
+})();
+</script>
+</body></html>

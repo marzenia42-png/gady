@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gekon lamparci — {APP}</title>
+<link rel="stylesheet" href="styl.css">
+<style>
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:10px}
+  .gallery .g{border-radius:12px;position:relative;overflow:hidden;background:#13281b}
+  @media(max-width:760px){ .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px} }
+
+  .titleblock{margin:26px 0 8px}
+  .titleblock h1{font-family:var(--serif);font-size:clamp(30px,5vw,48px);margin:8px 0 4px;letter-spacing:-.01em}
+  .titleblock .lat{font-style:italic;color:var(--muted);font-size:19px}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;margin-top:30px}
+  @media(max-width:860px){ .layout{grid-template-columns:1fr} }
+
+  .metryczka{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;align-self:start;position:sticky;top:82px}
+  .metryczka .mh{background:var(--forest);color:#eaf1ec;padding:14px 18px;font-family:var(--serif);font-size:18px}
+  .metryczka dl{margin:0;padding:4px 18px 14px}
+  .metryczka .r{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .metryczka .r:last-child{border:0}
+  .metryczka dt{color:var(--muted);font-size:13px;flex:0 0 44%} .metryczka dd{margin:0;font-weight:600;font-size:13.5px;text-align:right}
+
+  .block{margin-bottom:30px;max-width:80ch}
+  .block h2{font-family:var(--serif);font-size:25px;margin:0 0 10px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .block p,.block li{font-size:16.5px;color:var(--ink2);line-height:1.7}
+  .block ul{padding-left:20px;margin:8px 0}
+  .callout{background:#f3ead3;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+  .callout.vet{background:#f1dcd4;border-color:#9b4a2f}
+  .callout h4{margin:0 0 5px;font-size:15px} .callout.vet h4{color:#7a3420}
+  .mistake{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .mistake .x{color:#9b4a2f;font-weight:800;flex:0 0 auto}
+  .srcbox{background:var(--paper2);border-radius:12px;padding:16px 18px;max-width:80ch}
+  .srcbox li{font-size:14px;color:var(--ink2);margin:7px 0}
+</style>
+</head><body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" style="color:inherit"><span class="mk">🦎</span> <span data-app>Terrarium Atlas</span></a>
+  <nav class="menu"><a class="lnk" href="index.html#katalog">Gatunki</a><a class="lnk" href="poradnik.html">Poradniki</a>
+    <a class="lnk" href="rekordy.html">Rekordy</a><a class="lnk" href="quiz.html">Quiz &amp; symulator</a><a class="lnk" href="moje-terrarium.html">Moje terrarium</a><a class="lnk" href="asystent.html">Asystent</a></nav>
+  <span class="sp"></span><a class="search" href="index.html#katalog" style="color:var(--muted)">🔍 Przeglądaj gatunki</a>
+</div></header>
+
+<div class="wrap" style="padding-top:22px"><div class="kicker" id="grupaMenu">Gady · Jaszczurki</div></div>
+
+<div class="wrap" style="margin-top:14px">
+  <div class="gallery">
+    <div class="g"><img src="_media/gekon_portret.jpg" alt="Gekon lamparci — portret"><span class="caption-ov">Foto 1: G. Chernilevsky · domena publiczna</span></div>
+    <div class="g"><img src="_media/gekon_2.jpg" alt="Gekon lamparci"><span class="caption-ov">Foto 2: G. Chernilevsky · PD</span></div>
+    <div class="g ytf" id="yt"><img src="_media/gekon_3.jpg" alt="Wideo — gekon lamparci"><div class="play">▶</div><span class="caption-ov">Wideo (osadzone YouTube)</span></div>
+    <div class="g"><img src="_media/gekon_mlody.jpg" alt="Młody gekon lamparci"><span class="caption-ov">Foto 3: C. von Faber-Castell · CC BY 4.0</span></div>
+    <div class="g"><img src="_media/gekon_wylinka.jpg" alt="Gekon lamparci po wylince"><span class="caption-ov">Foto 4: Kinori · CC0 (linienie)</span></div>
+    <div class="g"><img src="_media/gekon_6.jpg" alt="Gekon lamparci — Quality image"><span class="caption-ov">Foto 5: G. Chernilevsky · domena publiczna</span></div>
+  </div>
+
+  <div class="titleblock">
+    <span class="badge b-easy">Poziom: łatwy — dobry na start</span>
+    <h1 class="serif">Gekon lamparci</h1>
+    <div class="lat">Eublepharis macularius</div>
+  </div>
+
+  <div class="layout">
+    <main>
+      <div class="block">
+        <h2 class="serif">O gatunku</h2>
+        <p>Naziemna, aktywna o zmierzchu i w nocy jaszczurka z suchych, skalistych terenów Afganistanu, Iranu,
+          Pakistanu, północno-zachodnich Indii i Nepalu. W odróżnieniu od większości gekonów ma ruchome powieki
+          i nie ma przylg na palcach, więc się nie wspina. Jeden z najpopularniejszych gadów w terrarystyce.
+          <span id="s_o"></span></p>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Wymagania terrarium</h2>
+        <ul id="l_terr"></ul>
+        <div class="callout"><h4>Kryjówki</h4>
+          Zapewnij min. trzy kryjówki: na ciepłej stronie, na chłodnej i <b>wilgotną kryjówkę</b> ułatwiającą linienie. <span id="s_hide"></span></div>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Temperatura, wilgotność, światło</h2>
+        <ul id="l_klimat"></ul>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Dieta i suplementacja</h2>
+        <p id="p_dieta"></p>
+        <div class="callout"><h4>Suplementy</h4><span id="p_supl"></span></div>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Linienie i autotomia ogona</h2>
+        <p id="p_lin"></p>
+        <p id="p_auto"></p>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Najczęstsze błędy</h2>
+        <div id="l_bledy"></div>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Zdrowie — objawy alarmowe</h2>
+        <p id="p_chor"></p>
+        <div class="callout vet"><h4>⚕️ Kiedy do weterynarza</h4><span id="p_alarm"></span></div>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Przepisy</h2>
+        <p id="p_prz"></p>
+      </div>
+
+      <div class="block">
+        <h2 class="serif">Źródła</h2>
+        <div class="srcbox"><ul id="l_src"></ul>
+          <p class="src" style="margin:8px 0 0">Każda liczba w metryczce i w tekście prowadzi do konkretnego źródła. Rozbieżności między źródłami podajemy jako zakres.</p></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="metryczka"><div class="mh serif">Metryczka</div><dl id="metr"></dl></div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+        <a class="btn" href="moje-terrarium.html" style="justify-content:center">+ Dodaj do „Moje terrarium”</a>
+        <a class="btn ghost" href="quiz.html" style="justify-content:center;color:var(--moss);border-color:var(--line)">Quiz o gekonie</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="foot" style="margin-top:50px"><div class="wrap">
+  <div><b data-app>Terrarium Atlas</b><br>Portal przyrodniczy o gadach terrariowych.</div>
+  <div class="credits">Liczby opieki: RSPCA, ReptiFiles. Fakty ogólne: Wikipedia. Status prawny: CITES. Zdjęcia: Wikimedia Commons — wykaz w CREDITS. Brak zdjęć AI.<br>
+    <b style="color:#eaf1ec;font-family:var(--sans)">⚕️ Treści edukacyjne — nie zastępują porady weterynarza.</b></div>
+</div></footer>
+
+
+<script src="dane.js"></script>
+<script>
+  const g=GEKON, m=g.metryczka, val=L=>(m.find(r=>r[0]===L)||[])[1]||"";
+  const srcOf=L=>(m.find(r=>r[0]===L)||[])[2]||[];
+  document.getElementById('grupaMenu').textContent = g.grupaMenu;
+
+  // metryczka
+  document.getElementById('metr').innerHTML = m.map(r=>
+    `<div class="r"><dt>${r[0]}</dt><dd>${r[1]} ${zrodlaSup(r[2])}</dd></div>`).join("");
+
+  // lista: wymagania terrarium
+  document.getElementById('l_terr').innerHTML =
+    `<li><b>Typ:</b> ${g.typTerrarium} ${zrodlaSup(srcOf('Typ terrarium'))}</li>`+
+    `<li><b>Min. wymiary:</b> ${val('Min. wymiary')} ${zrodlaSup(srcOf('Min. wymiary'))}</li>`+
+    `<li><b>Podłoże:</b> ${val('Podłoże')} ${zrodlaSup(srcOf('Podłoże'))}</li>`;
+  document.getElementById('s_hide').innerHTML = zrodlaSup(srcOf('Wilgotność'));
+
+  // klimat
+  document.getElementById('l_klimat').innerHTML =
+    `<li><b>Strefa ciepła (dzień):</b> ${val('Temp. — strefa ciepła')} ${zrodlaSup(srcOf('Temp. — strefa ciepła'))}</li>`+
+    `<li><b>Chłodny kąt:</b> ${val('Temp. — chłodny kąt')} ${zrodlaSup(srcOf('Temp. — chłodny kąt'))}</li>`+
+    `<li><b>Noc:</b> ${val('Temp. nocą')} ${zrodlaSup(srcOf('Temp. nocą'))}</li>`+
+    `<li><b>Wilgotność:</b> ${val('Wilgotność')} ${zrodlaSup(srcOf('Wilgotność'))}</li>`+
+    `<li><b>UVB:</b> ${val('Oświetlenie UVB')} ${zrodlaSup(srcOf('Oświetlenie UVB'))}</li>`;
+
+  document.getElementById('p_dieta').innerHTML = `${val('Dieta')} ${zrodlaSup(srcOf('Dieta'))}`;
+  document.getElementById('p_supl').innerHTML  = `${val('Suplementacja')} ${zrodlaSup(srcOf('Suplementacja'))}`;
+  document.getElementById('p_lin').innerHTML   = `${g.linienie.t} ${zrodlaSup(g.linienie.src)}`;
+  document.getElementById('p_auto').innerHTML  = `${g.autotomia.t} ${zrodlaSup(g.autotomia.src)}`;
+  document.getElementById('p_chor').innerHTML  = `${g.choroby.t} ${zrodlaSup(g.choroby.src)}`;
+  document.getElementById('p_alarm').innerHTML = `${g.objawyAlarm.t} ${zrodlaSup(g.objawyAlarm.src)}`;
+  document.getElementById('p_prz').innerHTML   = `${g.przepisy.t} ${zrodlaSup(g.przepisy.src)}`;
+
+  document.getElementById('l_bledy').innerHTML = g.bledy.map(b=>
+    `<div class="mistake"><span class="x">✕</span><div>${b[0]} ${zrodlaSup(b[1])}</div></div>`).join("");
+
+  // pełna lista źródeł (wszystkie użyte klucze)
+  const allKeys = [].concat(...m.map(r=>r[2]), g.linienie.src,g.autotomia.src,g.choroby.src,g.objawyAlarm.src,g.przepisy.src, ...g.bledy.map(b=>b[1]));
+  document.getElementById('l_src').innerHTML = zrodlaLista(allKeys);
+
+  // fasada wideo — iframe dopiero po kliknięciu (lekko, prywatnie)
+  document.getElementById('yt').addEventListener('click',function(){
+    this.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/ahVvzzscGsg?autoplay=1" title="Gekon lamparci — wideo" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  });
+</script>
+</body></html>

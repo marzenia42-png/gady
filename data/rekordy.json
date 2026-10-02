@@ -1,0 +1,168 @@
+{
+  "_nota": "Rekordy GADÓW. Każdy ze źródłem (Guinness, muzea, publikacje naukowe, Re:wild). Rozbieżności = zakres + oba źródła. Zero rekordów bez źródła. Płazów nie dodajemy.",
+  "rekordy": [
+    {
+      "id": "najmniejszy-gad",
+      "pytanie": "Jaki gad jest najmniejszy na świecie?",
+      "odpowiedz": "Brookesia nana — nano-kameleon",
+      "lacina": "Brookesia nana",
+      "liczba": "13,5 mm (długość ciała bez ogona)",
+      "dl_cm": 2.2,
+      "opis": "Samiec ma ciało (pysk–kloaka) długości 13,5 mm, a całe zwierzę ~21,6 mm — najmniejszy znany gad. Odkryty na Madagaskarze, opisany w 2021 r.",
+      "zrodla": [{"t": "Scientific Reports (2021), via NCBI PMC", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7844282/"}]
+    },
+    {
+      "id": "najmniejszy-gekon",
+      "pytanie": "Który gekon jest najmniejszy?",
+      "odpowiedz": "Gekon karłowaty z Jaragua",
+      "lacina": "Sphaerodactylus ariasae",
+      "liczba": "14–18 mm (pysk–kloaka)",
+      "dl_cm": 1.8,
+      "opis": "Mieści się na monecie. Jeden z najmniejszych gadów świata — rekord Guinnessa dla najmniejszego gekona.",
+      "zrodla": [{"t": "Guinness World Records — Smallest living gecko", "u": "https://www.guinnessworldrecords.com/world-records/596062-smallest-living-gecko-species"}]
+    },
+    {
+      "id": "najmniejszy-waz",
+      "pytanie": "Jaki wąż jest najmniejszy?",
+      "odpowiedz": "Wąż nitkowaty z Barbadosu",
+      "lacina": "Tetracheilostoma carlae",
+      "liczba": "do ~10,4 cm",
+      "dl_cm": 10.4,
+      "opis": "Najmniejszy znany gatunek węża — cienki jak makaron. Ponownie odnaleziony na Barbadosie w 2025 r. po ~20 latach.",
+      "zrodla": [{"t": "Re:wild — Barbados threadsnake rediscovery", "u": "https://www.rewild.org/press/barbados-threadsnake-rediscovery"}]
+    },
+    {
+      "id": "najwieksza-jaszczurka",
+      "pytanie": "Która jaszczurka jest największa?",
+      "odpowiedz": "Waran z Komodo",
+      "lacina": "Varanus komodoensis",
+      "liczba": "do 3,13 m i 166 kg",
+      "dl_cm": 313,
+      "opis": "Największa żyjąca jaszczurka. Typowo ~70 kg; największy zmierzony osobnik miał 3,13 m i 166 kg.",
+      "zrodla": [{"t": "Guinness World Records — Largest lizard", "u": "https://www.guinnessworldrecords.com/world-records/70287-largest-lizard"}]
+    },
+    {
+      "id": "najdluzszy-waz",
+      "pytanie": "Jak długi jest najdłuższy zmierzony wąż?",
+      "odpowiedz": "Pyton siatkowany",
+      "lacina": "Malayopython reticulatus",
+      "liczba": "7,22 m (dziko, 2026); do 7,67 m w niewoli; historyczne ~9,75 m (niepotwierdzone)",
+      "dl_cm": 722,
+      "opis": "Najdłuższy wiarygodnie zmierzony dziki wąż: 7,22 m (Indonezja, 2026). W niewoli „Medusa” 7,67 m. Rekordy historyczne >9 m nie spełniają dzisiejszych standardów dokumentacji — podajemy jako zakres.",
+      "zrodla": [{"t": "Guinness World Records — longest measured wild snake (2026)", "u": "https://www.guinnessworldrecords.com/news/2026/2/indonesian-python-makes-gwr-hissstory-as-the-longest-measured-wild-snake"}]
+    },
+    {
+      "id": "najciezszy-waz",
+      "pytanie": "Który wąż jest najcięższy?",
+      "odpowiedz": "Anakonda zielona",
+      "lacina": "Eunectes murinus",
+      "liczba": "do ~227 kg; długość do ~8,4 m",
+      "dl_cm": 840,
+      "opis": "Najcięższy wąż świata — masywniejszy niż dłuższy pyton siatkowany. Najcięższy odnotowany osobnik ~227 kg.",
+      "zrodla": [{"t": "Natural History Museum — biggest snake", "u": "https://www.nhm.ac.uk/discover/what-is-the-biggest-snake-in-the-world.html"}]
+    },
+    {
+      "id": "najwiekszy-gad",
+      "pytanie": "Jaki jest największy żyjący gad?",
+      "odpowiedz": "Krokodyl różańcowy (słonowodny)",
+      "lacina": "Crocodylus porosus",
+      "liczba": "do ~6,3 m i 1000–1500 kg",
+      "dl_cm": 630,
+      "opis": "Największy żyjący gad i największy drapieżnik lądowo-wodny. Samce zwykle do ~6 m, rzadko ponad 6,3 m.",
+      "zrodla": [{"t": "Guinness World Records — Largest crocodilian", "u": "https://www.guinnessworldrecords.com/world-records/largest-crocodilian"}]
+    },
+    {
+      "id": "najdluzej-zyjacy",
+      "pytanie": "Który gad żyje najdłużej?",
+      "odpowiedz": "Żółw Jonathan",
+      "lacina": "Aldabrachelys gigantea",
+      "liczba": "~190+ lat (wykluł się ok. 1832)",
+      "dl_cm": 120,
+      "opis": "Najstarsze znane żyjące zwierzę lądowe i najstarszy udokumentowany żółw w historii — żółw olbrzymi z wyspy Świętej Heleny.",
+      "zrodla": [{"t": "Guinness World Records — oldest tortoise ever (Jonathan)", "u": "https://www.guinnessworldrecords.com/news/2022/1/190-year-old-jonathan-becomes-worlds-oldest-tortoise-ever-688683"}]
+    },
+    {
+      "id": "najszybszy-gad",
+      "pytanie": "Jaki gad jest najszybszy na lądzie?",
+      "odpowiedz": "Legwan ciernistoogonowy",
+      "lacina": "Ctenosaura similis",
+      "liczba": "34,9 km/h",
+      "dl_cm": 120,
+      "opis": "Najwyższa zmierzona prędkość gada na lądzie — 34,9 km/h. Legwan z Ameryki Środkowej.",
+      "zrodla": [{"t": "Guinness World Records — Fastest lizard / reptile on land", "u": "https://www.guinnessworldrecords.com/world-records/70289-fastest-lizard"}]
+    },
+    {
+      "id": "najszybszy-waz",
+      "pytanie": "Który wąż jest najszybszy?",
+      "odpowiedz": "Mamba czarna",
+      "lacina": "Dendroaspis polylepis",
+      "liczba": "~16–20 km/h (na otwartym terenie)",
+      "dl_cm": 300,
+      "opis": "Najszybszy wąż poruszający się po otwartym terenie — rekord Guinnessa dla najszybszego węża.",
+      "zrodla": [{"t": "Newsweek — Black Mamba (cytuje rekord Guinnessa)", "u": "https://www.newsweek.com/black-mamba-facts-snake-species-fast-venomous-1694205"}]
+    },
+    {
+      "id": "najjadowitszy-waz",
+      "pytanie": "Który wąż lądowy ma najsilniejszy jad?",
+      "odpowiedz": "Tajpan wewnętrzny (pustynny)",
+      "lacina": "Oxyuranus microlepidotus",
+      "liczba": "LD50 ~0,025 mg/kg (myszy)",
+      "dl_cm": 200,
+      "opis": "Najbardziej jadowity wąż lądowy wg wartości LD50. Jad jednego ukąszenia jest teoretycznie bardzo silny, ale wąż jest płochliwy i rzadko spotyka ludzi.",
+      "zrodla": [{"t": "Australian Museum — Inland Taipan", "u": "https://australian.museum/learn/animals/reptiles/inland-taipan/"}]
+    },
+    {
+      "id": "najwiekszy-zolw",
+      "pytanie": "Jaki żółw jest największy?",
+      "odpowiedz": "Żółw skórzasty",
+      "lacina": "Dermochelys coriacea",
+      "liczba": "do ~2 m i ~900 kg",
+      "dl_cm": 200,
+      "opis": "Największy żółw świata i jeden z największych gadów. Nie ma twardej skorupy — pokrywa go skórzasta, elastyczna warstwa.",
+      "zrodla": [{"t": "National Geographic — Leatherback sea turtle", "u": "https://www.nationalgeographic.com/animals/reptiles/facts/leatherback-sea-turtle"}]
+    },
+    {
+      "id": "najdalszy-slizg",
+      "pytanie": "Który gad potrafi szybować w powietrzu?",
+      "odpowiedz": "Wąż latający (rajski)",
+      "lacina": "Chrysopelea paradisi",
+      "liczba": "ślizg na kilkadziesiąt metrów",
+      "dl_cm": 100,
+      "opis": "Spłaszcza ciało w „taśmę” i ślizga się między drzewami — jeden z nielicznych szybujących gadów. Badania biomechaniki potwierdziły aktywne sterowanie lotem.",
+      "zrodla": [{"t": "CBC Science — flying snakes (badania J. Socha)", "u": "https://www.cbc.ca/news/science/flying-snakes-secret-found-biologist-1.922254"}]
+    },
+    {
+      "id": "najdluzszy-jezyk",
+      "pytanie": "Który gad ma najdłuższy język względem ciała?",
+      "odpowiedz": "Kameleon (małe gatunki)",
+      "lacina": "Rhampholeon spinosus",
+      "liczba": "do ~2,5× długości ciała",
+      "dl_cm": 8,
+      "opis": "Mniejsze kameleony mają proporcjonalnie dłuższy i szybszy język — u Rhampholeon spinosus wystrzeliwuje do ok. 2,5 długości ciała, z ekstremalnym przyspieszeniem.",
+      "zrodla": [{"t": "Scientific Reports (2016) — ballistic tongue, via NCBI PMC", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4698635/"}]
+    },
+    {
+      "id": "najdziwniejszy",
+      "pytanie": "Który gad pije wodę… skórą?",
+      "odpowiedz": "Moloch (diabeł ciernisty)",
+      "lacina": "Moloch horridus",
+      "liczba": "pokryty kolcami; zbiera wodę kapilarnie skórą",
+      "dl_cm": 20,
+      "opis": "Pustynna agama z Australii. Mikrorowki między łuskami prowadzą wodę (np. z rosy) wprost do pyska. Kolce chronią przed drapieżnikami.",
+      "zrodla": [{"t": "Royal Society Open Science (2017) — skin water transport in Moloch", "u": "https://royalsocietypublishing.org/rsos/article/4/9/170591/93428/Adsorption-and-movement-of-water-by-skin-of-the"}]
+    }
+  ],
+  "quiz_mit": [
+    {"teza": "Najmniejszy gad świata mieści się na opuszku palca.", "prawda": true, "wyj": "Brookesia nana ma ciało ~13,5 mm — faktycznie mieści się na opuszku.", "zrodlo": {"t": "Scientific Reports 2021", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7844282/"}},
+    {"teza": "Najdłuższy wiarygodnie zmierzony dziki wąż miał ponad 9 metrów.", "prawda": false, "wyj": "Wiarygodnie zmierzony dziki rekord to 7,22 m (2026). Dawne „9+ m” nie są udokumentowane.", "zrodlo": {"t": "Guinness World Records 2026", "u": "https://www.guinnessworldrecords.com/news/2026/2/indonesian-python-makes-gwr-hissstory-as-the-longest-measured-wild-snake"}},
+    {"teza": "Anakonda zielona jest najcięższym wężem świata.", "prawda": true, "wyj": "Tak — masywniejsza niż dłuższy pyton siatkowany; do ~227 kg.", "zrodlo": {"t": "Natural History Museum", "u": "https://www.nhm.ac.uk/discover/what-is-the-biggest-snake-in-the-world.html"}},
+    {"teza": "Największym żyjącym gadem jest waran z Komodo.", "prawda": false, "wyj": "Największy żyjący gad to krokodyl różańcowy (do ~6,3 m). Komodo to największa jaszczurka.", "zrodlo": {"t": "Guinness — largest crocodilian", "u": "https://www.guinnessworldrecords.com/world-records/largest-crocodilian"}},
+    {"teza": "Pewien żółw ma ponad 190 lat.", "prawda": true, "wyj": "Żółw Jonathan (ur. ~1832) to najstarsze znane zwierzę lądowe.", "zrodlo": {"t": "Guinness World Records", "u": "https://www.guinnessworldrecords.com/news/2022/1/190-year-old-jonathan-becomes-worlds-oldest-tortoise-ever-688683"}},
+    {"teza": "Niektóre węże potrafią szybować w powietrzu.", "prawda": true, "wyj": "Węże z rodzaju Chrysopelea spłaszczają ciało i ślizgają się między drzewami.", "zrodlo": {"t": "CBC Science", "u": "https://www.cbc.ca/news/science/flying-snakes-secret-found-biologist-1.922254"}},
+    {"teza": "Żółw skórzasty ma twardą, kostną skorupę jak inne żółwie.", "prawda": false, "wyj": "Ma elastyczną, skórzastą powłokę zamiast twardej skorupy — stąd nazwa.", "zrodlo": {"t": "National Geographic", "u": "https://www.nationalgeographic.com/animals/reptiles/facts/leatherback-sea-turtle"}},
+    {"teza": "Najszybszy gad na lądzie rozpędza się do blisko 35 km/h.", "prawda": true, "wyj": "Legwan Ctenosaura similis — 34,9 km/h (rekord Guinnessa).", "zrodlo": {"t": "Guinness World Records", "u": "https://www.guinnessworldrecords.com/world-records/70289-fastest-lizard"}},
+    {"teza": "Tajpan wewnętrzny jest agresywny i często atakuje ludzi.", "prawda": false, "wyj": "Ma bardzo silny jad (LD50), ale jest płochliwy i rzadko spotyka ludzi.", "zrodlo": {"t": "Australian Museum", "u": "https://australian.museum/learn/animals/reptiles/inland-taipan/"}},
+    {"teza": "Diabeł ciernisty potrafi zbierać wodę przez skórę.", "prawda": true, "wyj": "Mikrorowki między łuskami prowadzą wodę kapilarnie do pyska.", "zrodlo": {"t": "Royal Society Open Science 2017", "u": "https://royalsocietypublishing.org/rsos/article/4/9/170591/93428/Adsorption-and-movement-of-water-by-skin-of-the"}},
+    {"teza": "Mniejsze kameleony mają proporcjonalnie krótszy język niż duże.", "prawda": false, "wyj": "Odwrotnie — mniejsze gatunki mają proporcjonalnie DŁUŻSZY i szybszy język (do ~2,5× ciała).", "zrodlo": {"t": "Scientific Reports 2016", "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4698635/"}}
+  ]
+}

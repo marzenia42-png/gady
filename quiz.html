@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Quiz i symulator — {APP}</title>
+<link rel="stylesheet" href="styl.css">
+<style>
+  .subhero{background:var(--forest);color:#eaf1ec;padding:46px 0 40px}
+  .subhero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,44px);margin:10px 0 10px}
+  .subhero p{color:#d7e4da;max-width:72ch;font-size:18px;margin:0}
+  .tabs{display:flex;gap:8px;margin:26px 0 0;flex-wrap:wrap}
+  .tab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eaf1ec;
+    padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer}
+  .tab.on{background:#eaf1ec;color:var(--forest)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media(max-width:860px){ .grid2{grid-template-columns:1fr} }
+  .panel{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .panel .ph{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .panel .ph .ic{width:34px;height:34px;border-radius:9px;background:radial-gradient(circle at 35% 30%,var(--moss-l),var(--forest));
+    display:flex;align-items:center;justify-content:center;font-size:17px}
+  .panel .ph h3{font-family:var(--serif);font-size:19px;margin:0}
+  .panel .pc{padding:20px}
+  .qimg{height:230px;border-radius:12px;overflow:hidden;position:relative;margin-bottom:16px}
+  .qimg img{width:100%;height:100%;object-fit:cover}
+  .qq{font-family:var(--serif);font-size:20px;margin:0 0 14px}
+  .ans{border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-bottom:10px;font-size:15.5px;cursor:pointer;transition:.2s;background:#fff}
+  .ans:hover{border-color:var(--moss)}
+  .ans.good{background:#e4efe5;border-color:#2f5d45;color:#234;font-weight:700}
+  .ans.bad{background:#f1dcd4;border-color:#9b4a2f}
+  .explain{background:var(--paper2);border-radius:11px;padding:14px 16px;font-size:14px;color:var(--ink2);margin-top:4px}
+  .explain b{color:var(--ink)} .explain a{border-bottom:1px solid var(--line)}
+  .creature{height:150px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:62px;
+    background:radial-gradient(120% 100% at 50% 30%,#6d7f45,#2f3d1f);margin-bottom:10px;transition:.4s}
+  .verdict{text-align:center;font-weight:700;font-size:15px;padding:11px;border-radius:10px;margin-bottom:16px}
+  .v-ok{background:#e4efe5;color:#2f5d45} .v-warn{background:#f3ead3;color:#8a641f} .v-bad{background:#f1dcd4;color:#9b4a2f}
+  .slider{margin-bottom:16px}
+  .slider .lab{display:flex;justify-content:space-between;font-size:14.5px;margin-bottom:6px}
+  .slider .lab b{color:var(--moss)}
+  input[type=range]{width:100%;accent-color:var(--moss)}
+  .norm{font-size:12px;color:var(--muted);margin-top:4px}
+  .srcline{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .stats{display:flex;gap:12px;margin-top:20px}
+  .stat{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+  .stat .n{font-family:var(--serif);font-size:22px;color:var(--amber)} .stat .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+</style>
+</head><body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" style="color:inherit"><span class="mk">🦎</span> <span data-app>Terrarium Atlas</span></a>
+  <nav class="menu"><a class="lnk" href="index.html#katalog">Gatunki</a><a class="lnk" href="poradnik.html">Poradniki</a>
+    <a class="lnk" href="rekordy.html">Rekordy</a><a class="lnk" href="quiz.html">Quiz &amp; symulator</a><a class="lnk" href="moje-terrarium.html">Moje terrarium</a><a class="lnk" href="asystent.html">Asystent</a></nav>
+  <span class="sp"></span><a class="search" href="index.html#katalog" style="color:var(--muted)">🔍 Przeglądaj gatunki</a>
+</div></header>
+
+<section class="subhero"><div class="wrap">
+  <div class="kicker light">Nauka przez zabawę</div>
+  <h1 class="serif">Quiz i symulator warunków</h1>
+  <p>Sprawdź wiedzę i przećwicz ustawianie terrarium. Wszystkie oceny opierają się na tych samych danych,
+    co karta gatunku — jedno źródło prawdy, każda odpowiedź z wyjaśnieniem i linkiem do źródła.</p>
+  <div class="tabs"><span class="tab on">Jaki to gatunek?</span><span class="tab">Dobrze czy źle?</span>
+    <span class="tab">Test po poradniku</span><span class="tab">Symulator terrarium</span></div>
+</div></section>
+
+<section class="section"><div class="wrap"><div class="grid2">
+
+  <!-- lewa kolumna: quizy -->
+  <div>
+    <div class="panel" style="margin-bottom:28px">
+      <div class="ph"><span class="ic">❓</span><h3 class="serif">Jaki to gatunek?</h3></div>
+      <div class="pc">
+        <div class="qimg"><img src="_media/gekon_portret.jpg" alt="Rozpoznaj gatunek"><span class="caption-ov">Foto: G. Chernilevsky · domena publiczna</span></div>
+        <p class="qq">Rozpoznaj tę jaszczurkę:</p>
+        <div class="ans" data-ok="0">Agama brodata</div>
+        <div class="ans" data-ok="1">Gekon lamparci</div>
+        <div class="ans" data-ok="0">Scynk języczasty</div>
+        <div class="explain" hidden><b>Poprawna odpowiedź: Gekon lamparci.</b> <i>Eublepharis macularius</i> — ma ruchome powieki i brak przylg na palcach.
+          <a href="gatunek.html">Zobacz kartę →</a> · Źródło:
+          <a href="https://en.wikipedia.org/wiki/Common_leopard_gecko" target="_blank" rel="noopener">Wikipedia</a></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><span class="ic">⚖️</span><h3 class="serif">Dobrze czy źle?</h3></div>
+      <div class="pc">
+        <p class="src" style="margin-top:0">Ponad 12 scenariuszy w losowej kolejności. Kliknij „Dobrze” lub „Źle” — po odpowiedzi zobaczysz wyjaśnienie i źródło. Wynik tylko lokalnie.</p>
+        <div id="dobrze"></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n" id="qscore">0/0</div><div class="l">Twój wynik</div></div>
+      <div class="stat"><div class="n" id="qpct">—</div><div class="l">skuteczność</div></div>
+      <div class="stat"><div class="n"><a href="#" id="qreset" style="font-size:14px;color:var(--moss)">wyczyść</a></div><div class="l">wynik lokalny</div></div>
+    </div>
+    <p class="srcline" style="margin-top:12px">Wyniki zapisywane wyłącznie lokalnie na tym urządzeniu — bez kont i rankingów.</p>
+  </div>
+
+  <!-- prawa kolumna: symulator -->
+  <div id="symulator">
+    <div class="panel">
+      <div class="ph"><span class="ic">🎚️</span><h3 class="serif">Symulator terrarium</h3></div>
+      <div class="pc">
+        <p class="src" style="margin-top:0">Gatunek: <b style="color:var(--ink)">Gekon lamparci</b> ·
+          oceniane wg danych z karty gatunku <span id="simLink"></span></p>
+        <div class="creature" id="crt">🦎</div>
+        <div class="verdict v-ok" id="verdict">Warunki prawidłowe dla gatunku ✓</div>
+        <div id="sliders"></div>
+        <p class="srcline">Ten sam zestaw norm zasila kartę gatunku, quiz i symulator — zmiana danych w jednym miejscu (plik <code>dane.js</code>).</p>
+      </div>
+    </div>
+  </div>
+
+</div></div></section>
+
+<footer class="foot"><div class="wrap">
+  <div><b data-app>Terrarium Atlas</b><br>Portal przyrodniczy o gadach terrariowych.</div>
+  <div class="credits">Dane gier = dane karty gatunku (jedno źródło prawdy: RSPCA, ReptiFiles). Wyniki tylko lokalnie. Zdjęcia: Wikimedia Commons — wykaz w CREDITS.<br>
+    <b style="color:#eaf1ec;font-family:var(--sans)">⚕️ Treści edukacyjne — nie zastępują porady weterynarza.</b></div>
+</div></footer>
+
+
+<script src="dane.js"></script>
+<script>
+  const S = GEKON.sim;
+  // zbuduj suwaki z norm gatunku
+  const defs = [['temp','🌡️'],['wilg','💧'],['uvb','☀️']];
+  document.getElementById('sliders').innerHTML = defs.map(([k,ic])=>{
+    const s=S[k], mid=Math.round((s.min+s.max)/2);
+    return `<div class="slider"><div class="lab"><span>${ic} ${s.etyk}</span><b id="v_${k}">${mid}${s.jedn}</b></div>
+      <input type="range" min="${s.abs[0]}" max="${s.abs[1]}" value="${mid}" id="r_${k}" oninput="sim()">
+      <div class="norm">Norma gatunku: ${s.min}–${s.max}${s.jedn} ${zrodlaSup(s.src)}</div></div>`;
+  }).join("");
+  document.getElementById('simLink').innerHTML = '· ' + zrodlaSup(['rspca','reptifiles']);
+
+  function okRange(k){const s=S[k],v=+document.getElementById('r_'+k).value;return v>=s.min&&v<=s.max;}
+  function sim(){
+    defs.forEach(([k])=>{document.getElementById('v_'+k).textContent=document.getElementById('r_'+k).value+S[k].jedn;});
+    const score=defs.filter(([k])=>okRange(k)).length;
+    const v=document.getElementById('verdict'), c=document.getElementById('crt');
+    v.className='verdict';
+    if(score===3){v.classList.add('v-ok');v.textContent='Warunki prawidłowe dla gatunku ✓';c.style.filter='none';c.style.transform='scale(1.05)';}
+    else if(score===2){v.classList.add('v-warn');v.textContent='Warunki do poprawy — sprawdź normy';c.style.filter='saturate(.6)';c.style.transform='scale(1)';}
+    else{v.classList.add('v-bad');v.textContent='Warunki szkodliwe dla gatunku';c.style.filter='grayscale(.6) brightness(.8)';c.style.transform='scale(.93)';}
+  }
+  document.querySelectorAll('.tab').forEach(x=>x.onclick=()=>{document.querySelectorAll('.tab').forEach(y=>y.classList.remove('on'));x.classList.add('on');});
+  sim();
+
+  // ——— interaktywny quiz — klik ujawnia poprawną odpowiedź + wyjaśnienie/źródło; wynik TYLKO lokalnie ———
+  function qGet(){ try{ return JSON.parse(localStorage.getItem('ta_quiz')||'{"ans":0,"ok":0}'); }catch(e){ return {ans:0,ok:0}; } }
+  function qSet(s){ try{ localStorage.setItem('ta_quiz', JSON.stringify(s)); }catch(e){} }
+  function qRender(){ var s=qGet();
+    var sc=document.getElementById('qscore'); if(sc) sc.textContent=s.ok+'/'+s.ans;
+    var pc=document.getElementById('qpct'); if(pc) pc.textContent = s.ans? Math.round(100*s.ok/s.ans)+'%' : '—'; }
+  document.querySelectorAll('.panel .pc').forEach(function(pc){
+    var ans=pc.querySelectorAll('.ans'); if(!ans.length) return;
+    var ex=pc.querySelector('.explain'); if(ex) ex.hidden=true;
+    ans.forEach(function(a){ a.addEventListener('click', function(){
+      if(pc.dataset.done) return; pc.dataset.done='1';
+      var ok=a.getAttribute('data-ok')==='1';
+      ans.forEach(function(x){ if(x.getAttribute('data-ok')==='1') x.classList.add('good'); });
+      if(!ok) a.classList.add('bad');
+      if(ex) ex.hidden=false;
+      var s=qGet(); s.ans++; if(ok) s.ok++; qSet(s); qRender();
+    }); });
+  });
+  var qr=document.getElementById('qreset'); if(qr) qr.onclick=function(e){ e.preventDefault(); qSet({ans:0,ok:0}); qRender();
+    document.querySelectorAll('.panel .pc').forEach(function(pc){ delete pc.dataset.done;
+      pc.querySelectorAll('.ans').forEach(function(x){x.classList.remove('good','bad');});
+      var ex=pc.querySelector('.explain'); if(ex) ex.hidden=true; });
+    renderDobrze(); };
+  qRender();
+
+  // ——— „Dobrze czy źle?” — 13 scenariuszy na danych gekona, losowa kolejność ———
+  var QUIZ_DZ = [
+    {s:"Trzymasz dorosłego gekona w terrarium 30×20×20 cm.", ok:false, w:"Za małe — minimum 60×40×30 cm (RSPCA), zalecane ≥90×45×45 cm (ReptiFiles).", src:["rspca","reptifiles"]},
+    {s:"Strona ciepła ma 30°C, a chłodny kąt 24°C.", ok:true, w:"W normie: strefa ciepła 28–36°C, chłodny kąt 21–26°C.", src:["rspca","reptifiles"]},
+    {s:"Nie suplementujesz wapnia, bo gekon dobrze je.", ok:false, w:"Brak wapnia/UVB grozi metaboliczną chorobą kości (MBD).", src:["rspca"]},
+    {s:"Dajesz wilgotną kryjówkę, by ułatwić linienie.", ok:true, w:"Dobrze — wilgotna kryjówka ułatwia zrzucanie wylinki.", src:["rspca","reptifiles"]},
+    {s:"U młodego gekona sypiesz drobny, luźny piasek.", ok:false, w:"Ryzyko zatkania przewodu pokarmowego — u młodych lepiej mata/papier.", src:["reptifiles"]},
+    {s:"Karmisz dorosłego gekona owadami co 2 dni.", ok:true, w:"Prawidłowo: dorosłe co 2 dni, młode codziennie.", src:["rspca","reptifiles"]},
+    {s:"Podstawą diety robisz sałatę i owoce.", ok:false, w:"Gekon to owadożerca — tylko owady karmowe.", src:["petmd"]},
+    {s:"UVB świeci około 11 godzin dziennie.", ok:true, w:"W normie: ~10–14 h dziennie.", src:["rspca","reptifiles"]},
+    {s:"Grzałkę podłączasz bez termostatu.", ok:false, w:"Bez termostatu grozi przegrzanie i poparzenia.", src:["reptifiles"]},
+    {s:"Zostawiasz zużytą świetlówkę UVB, bo wciąż świeci.", ok:false, w:"Emisja UVB spada zanim lampa zgaśnie — trzeba ją wymieniać.", src:["petmd"]},
+    {s:"Myjesz ręce po każdym kontakcie z gekonem.", ok:true, w:"Dobra praktyka — gady mogą przenosić bakterie (np. Salmonella).", src:["petmd"]},
+    {s:"Przy zaleganiu wylinki na palcach czekasz, aż samo zejdzie.", ok:false, w:"Resztki wylinki mogą zacisnąć palce — kontroluj, nawilżaj, w razie potrzeby weterynarz.", src:["rspca","reptifiles"]},
+    {s:"Wilgotność otoczenia utrzymujesz w okolicach 35%.", ok:true, w:"W normie: 30–40% (plus wilgotna kryjówka 70–80%).", src:["rspca","reptifiles"]}
+  ];
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+  function renderDobrze(){
+    var box=document.getElementById('dobrze'); if(!box) return;
+    var qs=shuffle(QUIZ_DZ);
+    box.innerHTML = qs.map(function(q,i){
+      return '<div class="tq" data-ok="'+(q.ok?1:0)+'" style="border-top:1px solid var(--line);padding-top:12px;margin-top:12px">'+
+        '<div class="qq" style="font-size:16px;margin-bottom:8px">'+(i+1)+'. '+q.s+'</div>'+
+        '<div style="display:flex;gap:8px"><div class="ans dz" data-pick="1" style="flex:1;text-align:center">Dobrze</div>'+
+        '<div class="ans dz" data-pick="0" style="flex:1;text-align:center">Źle</div></div>'+
+        '<div class="explain" hidden>'+q.w+' '+zrodlaSup(q.src)+'</div></div>';
+    }).join('');
+    box.querySelectorAll('.tq').forEach(function(tq){
+      var ok=tq.getAttribute('data-ok')==='1';
+      var opts=tq.querySelectorAll('.dz'); var ex=tq.querySelector('.explain');
+      opts.forEach(function(o){ o.addEventListener('click', function(){
+        if(tq.dataset.done) return; tq.dataset.done='1';
+        var pickGood = o.getAttribute('data-pick')==='1';
+        var correct = (pickGood===ok);
+        opts.forEach(function(x){ var xg=x.getAttribute('data-pick')==='1'; if(xg===ok) x.classList.add('good'); });
+        if(!correct) o.classList.add('bad');
+        ex.hidden=false;
+        var s=qGet(); s.ans++; if(correct) s.ok++; qSet(s); qRender();
+      }); });
+    });
+  }
+  renderDobrze();
+</script>
+</body></html>

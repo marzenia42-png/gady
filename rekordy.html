@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rekordy i dziwy gadów — {APP}</title>
+<link rel="stylesheet" href="styl.css">
+<style>
+  .subhero{background:var(--forest);color:#eaf1ec;padding:40px 0 34px}
+  .subhero h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,44px);margin:10px 0 10px}
+  .subhero p{color:#d7e4da;max-width:72ch;font-size:17px;margin:0}
+  .rekordy{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.rekordy{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.rekordy{grid-template-columns:1fr}}
+  .flip{perspective:1200px;min-height:270px;cursor:pointer}
+  .flip-in{position:relative;width:100%;min-height:270px;transition:transform .6s;transform-style:preserve-3d}
+  .flip.on .flip-in{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;background:#fff}
+  .front{background:radial-gradient(130% 120% at 30% 20%,#2a4a35,#12241a);color:#eaf1ec;justify-content:space-between}
+  .front .kat{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#d8b25e;font-weight:700}
+  .front h3{font-family:var(--serif);font-size:22px;margin:8px 0}
+  .front .hint{font-size:12px;color:#9db3a5}
+  .back{transform:rotateY(180deg);overflow:auto}
+  .back h3{font-family:var(--serif);margin:0 0 2px;font-size:19px;color:var(--ink)}
+  .back .lat{font-style:italic;color:var(--muted);font-size:13px}
+  .back .liczba{font-weight:800;color:var(--moss);margin:6px 0;font-size:15px}
+  .back .opis{font-size:13px;color:var(--ink2);line-height:1.5}
+  .back .src{font-size:11.5px;color:var(--muted);margin-top:6px}
+  .back .src a{border-bottom:1px solid var(--line)}
+  .skala{margin:8px 0 2px}
+  .skala .row{display:flex;align-items:center;gap:8px;margin:2px 0}
+  .skala .row span{font-size:11px;color:var(--muted);width:60px;flex:0 0 auto}
+  .skala .bar{height:9px;border-radius:5px;background:var(--moss)}
+  .skala .barh{height:9px;border-radius:5px;background:var(--line)}
+  .mit .ans{text-align:center}
+  .mit .tq{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+</style>
+</head><body>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html" style="color:inherit"><span class="mk">🦎</span> <span data-app>Terrarium Atlas</span></a>
+  <nav class="menu"><a class="lnk" href="index.html#katalog">Gatunki</a><a class="lnk" href="poradnik.html">Poradniki</a>
+    <a class="lnk" href="rekordy.html">Rekordy</a><a class="lnk" href="quiz.html">Quiz &amp; symulator</a>
+    <a class="lnk" href="moje-terrarium.html">Moje terrarium</a><a class="lnk" href="asystent.html">Asystent</a></nav>
+  <span class="sp"></span><a class="search" href="index.html#katalog" style="color:var(--muted)">🔍 Przeglądaj gatunki</a>
+</div></header>
+
+<section class="subhero"><div class="wrap">
+  <div class="kicker light">Rekordy i dziwy</div>
+  <h1 class="serif">Rekordy świata gadów</h1>
+  <p>Najmniejszy, największy, najdłużej żyjący, najszybszy, najdziwniejszy… Kliknij kartę, by ją odwrócić — każdy rekord ma liczbę, krótki opis i <b>link do źródła</b> (Guinness, muzea, publikacje naukowe). Tylko gady.</p>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="rekordy" id="karty"></div>
+  <p class="src" style="margin-top:16px">Rozbieżności między źródłami podajemy jako zakres. Paski „skala" porównują orientacyjną długość zwierzęcia z sylwetką człowieka (~170 cm).</p>
+</div></section>
+
+<section class="section tint"><div class="wrap">
+  <div class="kicker">Sprawdź się</div>
+  <h2 class="serif" style="font-family:var(--serif);font-size:28px;margin:6px 0 4px">Quiz: prawda czy mit?</h2>
+  <p class="src" style="margin:0 0 10px">10 tez o rekordach gadów. Oceń każdą — po odpowiedzi zobaczysz wyjaśnienie i źródło. Wynik tylko lokalnie.</p>
+  <div class="mit" id="mit"></div>
+  <div style="font-weight:800;font-family:var(--serif);font-size:18px;margin-top:14px" id="mitScore">Wynik: 0/0</div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <div><b data-app>Terrarium Atlas</b><br>Portal przyrodniczy o gadach terrariowych.</div>
+  <div class="credits">Każdy rekord ze źródłem (Guinness, muzea, publikacje naukowe, Re:wild). Dane: <code>data/rekordy.json</code>. Zdjęcia do kart: Wikimedia Commons (dodawane etapami, wykaz w CREDITS).<br>
+    <b style="color:#eaf1ec;font-family:var(--sans)">⚕️ Treści edukacyjne — nie zastępują porady weterynarza.</b></div>
+</div></footer>
+
+<script src="dane.js"></script>
+<script>
+(function(){
+  fetch("data/rekordy.json?v=1",{cache:"no-cache"}).then(function(r){return r.json();}).then(function(D){
+    // karty
+    var box = document.getElementById("karty");
+    box.innerHTML = D.rekordy.map(function(r){
+      var maxv = Math.max(r.dl_cm||0, 170);
+      var aw = Math.max(2, Math.round((r.dl_cm||0)/maxv*100));
+      var hw = Math.round(170/maxv*100);
+      var src = r.zrodla.map(function(z){ return '<a href="'+z.u+'" target="_blank" rel="noopener">'+z.t+'</a>'; }).join("; ");
+      var skala = (r.dl_cm? '<div class="skala"><div class="row"><span>zwierzę</span><div class="bar" style="width:'+aw+'%"></div></div>'+
+        '<div class="row"><span>człowiek</span><div class="barh" style="width:'+hw+'%"></div></div></div>' : '');
+      return '<div class="flip"><div class="flip-in">'+
+        '<div class="face front"><div class="kat">Rekord</div><h3>'+r.pytanie+'</h3><div class="hint">kliknij, by odwrócić →</div></div>'+
+        '<div class="face back"><h3>'+r.odpowiedz+'</h3><div class="lat">'+r.lacina+'</div>'+
+        '<div class="liczba">'+r.liczba+'</div>'+ skala +
+        '<div class="opis">'+r.opis+'</div><div class="src">Źródło: '+src+'</div></div>'+
+        '</div></div>';
+    }).join("");
+    box.querySelectorAll(".flip").forEach(function(f){ f.addEventListener("click",function(){ f.classList.toggle("on"); }); });
+
+    // quiz prawda/mit
+    var mit = document.getElementById("mit"), correct=0, total=D.quiz_mit.length;
+    function upd(){ document.getElementById("mitScore").textContent = "Wynik: "+correct+"/"+total; }
+    mit.innerHTML = D.quiz_mit.map(function(q,i){
+      return '<div class="tq" data-ok="'+(q.prawda?1:0)+'"><div class="qq" style="font-weight:700;margin-bottom:8px">'+(i+1)+'. '+q.teza+'</div>'+
+        '<div style="display:flex;gap:8px"><div class="ans" data-pick="1" style="flex:1">Prawda</div><div class="ans" data-pick="0" style="flex:1">Mit</div></div>'+
+        '<div class="explain" hidden>'+q.wyj+' <span class="src" style="color:var(--muted)">Źródło: <a href="'+q.zrodlo.u+'" target="_blank" rel="noopener">'+q.zrodlo.t+'</a></span></div></div>';
+    }).join("");
+    mit.querySelectorAll(".tq").forEach(function(tq){
+      var ok=tq.getAttribute("data-ok")==="1", opts=tq.querySelectorAll(".ans"), ex=tq.querySelector(".explain");
+      opts.forEach(function(o){ o.addEventListener("click",function(){
+        if(tq.dataset.done) return; tq.dataset.done="1";
+        var pickTrue=o.getAttribute("data-pick")==="1", good=(pickTrue===ok);
+        opts.forEach(function(x){ if((x.getAttribute("data-pick")==="1")===ok) x.classList.add("good"); });
+        if(!good) o.classList.add("bad");
+        ex.hidden=false; if(good) correct++; upd();
+        try{ localStorage.setItem("ta_mit", correct+"/"+total); }catch(e){}
+      }); });
+    });
+    upd();
+  }).catch(function(){ document.getElementById("karty").innerHTML="<p>Nie udało się wczytać rekordów.</p>"; });
+})();
+</script>
+</body></html>
