@@ -75,10 +75,18 @@ function zrodlaLista(klucze) {
   return uniq.map(k => `<li><b>[${k}]</b> <a href="${ZRODLA[k].u}" target="_blank" rel="noopener">${ZRODLA[k].t}</a></li>`).join("");
 }
 
-/* Nazwa serwisu w jednym miejscu: wypełnia [data-app] i token {APP} w <title>. */
+/* Nazwa serwisu w JEDNYM miejscu (CONFIG.APP_NAME): wypełnia [data-app]
+   i składa <title> z kontekstu strony (data-ctx na <title>) + nazwy serwisu.
+   W HTML tytuł jest literalny (poprawny bez JS / dla crawlerów), a tu jest
+   odświeżany z CONFIG — bez żadnych placeholderów. Zmiana nazwy = tylko CONFIG.APP_NAME. */
 document.addEventListener("DOMContentLoaded", function () {
   var n = CONFIG.APP_NAME;
   var els = document.querySelectorAll("[data-app]");
   for (var i = 0; i < els.length; i++) els[i].textContent = n;
-  if (document.title.indexOf("{APP}") >= 0) document.title = document.title.replace(/\{APP\}/g, n);
+  var t = document.querySelector("title[data-ctx]");
+  if (t) {
+    var ctx = t.getAttribute("data-ctx");
+    var order = t.getAttribute("data-order") || "suffix";
+    document.title = ctx ? (order === "prefix" ? (n + " — " + ctx) : (ctx + " — " + n)) : n;
+  }
 });
