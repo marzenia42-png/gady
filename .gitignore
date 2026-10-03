@@ -5,6 +5,7 @@ _review/
 Thumbs.db
 
 # Dokumenty wewnętrzne — NIE publikować
+_stan/
 ASYSTENT_KROKI*.md
 PLAN_ASYSTENT.md
 PUBLIKACJA.md
