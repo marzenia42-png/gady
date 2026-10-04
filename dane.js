@@ -58,4 +58,90 @@ document.addEventListener("DOMContentLoaded", function () {
     var order = t.getAttribute("data-order") || "suffix";
     document.title = ctx ? (order === "prefix" ? (n + " — " + ctx) : (ctx + " — " + n)) : n;
   }
+  enhanceNav();
 });
+
+/* NAWIGACJA — jedno źródło treści dla desktopu i telefonu.
+   Pozycje górne czytamy z istniejącego <nav class="menu"> (zachowana kolejność/etykiety),
+   a listę gatunków z dane/gatunki/index.json (gekon lamparci pierwszy). Z tej samej listy
+   budujemy: dropdown „Gatunki" na desktopie ORAZ pełny akordeon w menu mobilnym (hamburger).
+   Dzięki temu liczba linków desktop == mobile i nic z desktopu nie znika na 390 px. */
+function enhanceNav() {
+  var navs = document.querySelectorAll("header.nav");
+  if (!navs.length) return;
+  loadKatalog().then(function (slugs) {
+    return Promise.all(slugs.map(function (s) {
+      return loadGatunek(s).then(function (g) { return { slug: g.slug, label: g.nazwaPL }; }).catch(function () { return null; });
+    }));
+  }).then(function (list) {
+    var species = list.filter(Boolean);
+    navs.forEach(function (nav) { buildNav(nav, species); });
+  }).catch(function () {
+    navs.forEach(function (nav) { buildNav(nav, []); });
+  });
+}
+
+function buildNav(nav, species) {
+  var wrap = nav.querySelector(".wrap"); if (!wrap || nav.dataset.navBuilt) return;
+  nav.dataset.navBuilt = "1";
+  var menu = wrap.querySelector(".menu");
+  var search = wrap.querySelector(".search");
+  var isGat = function (href, label) { return /index\.html#katalog/.test(href || "") || /gatunki/i.test(label || ""); };
+  var esc = function (s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); };
+  var sp = species.map(function (s) { return '<a href="gatunek.html?id=' + encodeURIComponent(s.slug) + '">' + esc(s.label) + "</a>"; }).join("");
+
+  // --- DESKTOP: dropdown gatunków pod pozycją „Gatunki" ---
+  if (menu && species.length) {
+    var links = [].slice.call(menu.querySelectorAll("a.lnk"));
+    var gLink = links.filter(function (a) { return isGat(a.getAttribute("href"), a.textContent); })[0];
+    if (gLink) {
+      var grp = document.createElement("span"); grp.className = "hasdrop";
+      gLink.parentNode.insertBefore(grp, gLink); grp.appendChild(gLink);
+      grp.insertAdjacentHTML("beforeend", '<span class="caret" aria-hidden="true">▾</span>');
+      var dd = document.createElement("div"); dd.className = "dropdown";
+      dd.innerHTML = species.map(function (s) { return '<a class="ddlnk" href="gatunek.html?id=' + encodeURIComponent(s.slug) + '">' + esc(s.label) + "</a>"; }).join("");
+      grp.appendChild(dd);
+    }
+  }
+
+  // --- MOBILE: hamburger + panel (akordeon z gatunkami) ---
+  var btn = document.createElement("button");
+  btn.className = "navtoggle"; btn.type = "button";
+  btn.setAttribute("aria-label", "Menu"); btn.setAttribute("aria-expanded", "false");
+  btn.innerHTML = "<span></span><span></span><span></span>";
+  wrap.appendChild(btn);
+
+  var topLinks = menu ? [].slice.call(menu.querySelectorAll("a.lnk")).map(function (a) {
+    return { label: a.textContent.trim(), href: a.getAttribute("href") };
+  }) : [];
+  var html = topLinks.map(function (tl) {
+    if (isGat(tl.href, tl.label) && species.length) {
+      return '<div class="npgroup"><button class="npacc" type="button" aria-expanded="false">' +
+        '<a href="' + esc(tl.href) + '">' + esc(tl.label) + '</a><span class="accx" aria-hidden="true">+</span></button>' +
+        '<div class="npsub">' + sp + "</div></div>";
+    }
+    return '<a class="nplnk" href="' + esc(tl.href) + '">' + esc(tl.label) + "</a>";
+  }).join("");
+  if (search) html += '<a class="npsearch" href="' + esc(search.getAttribute("href")) + '">' + esc(search.textContent.trim()) + "</a>";
+  var panel = document.createElement("div"); panel.className = "navpanel"; panel.innerHTML = html;
+  nav.appendChild(panel);
+
+  function closeNav() { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  panel.querySelectorAll(".npacc").forEach(function (acc) {
+    acc.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") return;           // klik w etykietę = nawigacja
+      e.preventDefault(); e.stopPropagation();
+      var g = acc.parentNode, exp = g.classList.toggle("exp");
+      acc.setAttribute("aria-expanded", exp ? "true" : "false");
+      acc.querySelector(".accx").textContent = exp ? "–" : "+";
+    });
+  });
+  panel.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeNav); });
+  document.addEventListener("click", function (e) { if (nav.classList.contains("open") && !nav.contains(e.target)) closeNav(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
+}

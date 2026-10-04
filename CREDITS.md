@@ -95,8 +95,9 @@ z obydwoma przypisami; w symulatorze norma gatunku 38–45°C. VCA nie użyte �
 | `cites` | CITES — Checklist (Python regius, załącznik II) — https://checklist.cites.org/ | status międzynarodowy: CITES załącznik II (UE aneks B rozp. 338/97) |
 | `gdos` | Gov.pl (biznes.gov.pl / GDOŚ) — https://www.biznes.gov.pl/pl/firma/zezwolenia-koncesje-wpisy-do-rejestru/chce-uzyskac-zezwolenie-koncesje-wpis-do-rejestru-dzialalnosci-regulowanej54/proc_428-zezwolenie-na-przywoz-do-ue-egzotycznych-okazow-dzikiej-fauny-i-flory---cites | obowiązek rejestracji żywych gadów z aneksów A/B w starostwie powiatowym (art. 64 ustawy o ochronie przyrody) |
 
-Rozbieżność wilgotności (ReptiFiles 55–65% vs PetMD 40–60%) pokazana jako „55–65% (źródła podają 40–65%)”
-z obydwoma przypisami. Temperatura ciepłej strony 31–35°C z punktem grzania do ~40°C (ReptiFiles + PetMD).
+Rozbieżność wilgotności (ReptiFiles 55–65% vs PetMD 40–60%) pokazana jako jeden zakres **40–65%**
+(suma obu źródeł) z obydwoma przypisami — ta sama wartość na karcie i w symulatorze (obie z JSON-a,
+pole `metryczka` Wilgotność i `sim.wilg`). Temperatura ciepłej strony 31–35°C z punktem grzania do ~40°C.
 
 ---
 
