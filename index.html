@@ -28,7 +28,7 @@
     <p class="lead">Sprawdzona wiedza o pielęgnacji gadów: wymagania terrarium, oświetlenie,
       temperatura, dieta i zdrowie. Każda liczba poparta źródłem.</p>
     <div class="meta">
-      <span>Pierwsza pełna karta: gekon lamparci</span>
+      <span>Pełne karty gatunków ze źródłami</span>
       <span>Każda liczba ze źródłem</span>
       <span>Quiz i symulator warunków</span>
     </div>
@@ -48,7 +48,7 @@
 <section class="section"><div class="wrap">
     <div class="head" style="margin-bottom:14px"><div><div class="kicker">Rekordy i dziwy</div>
       <h2 class="serif">Ciekawostka dnia</h2></div><a class="more" href="rekordy.html">Wszystkie rekordy →</a></div>
-    <div id="ciekawostka" style="background:var(--paper2);border-radius:14px;padding:20px 24px">Ładowanie…</div>
+    <div id="ciekawostka" style="background:var(--paper2);border-radius:14px;padding:20px 24px"></div>
   </div></section>
 
 <section class="section tint" id="katalog">
@@ -57,20 +57,8 @@
       <div><div class="kicker">Katalog gatunków</div>
         <h2 class="serif">Gatunki</h2></div>
     </div>
-    <div class="cards">
-
-      <a class="card" href="gatunek.html" style="color:inherit">
-        <div class="ph"><img src="_media/gekon_portret.jpg" alt="Gekon lamparci">
-          <span class="lvl">Poziom: łatwy</span><span class="caption-ov">Foto: G. Chernilevsky · domena publiczna</span></div>
-        <div class="cb"><h3 class="serif">Gekon lamparci</h3><div class="lat">Eublepharis macularius</div>
-          <p class="ex">Naziemna jaszczurka pustynna, aktywna o zmierzchu. Klasyk terrarystyki, wdzięczna na start.</p>
-          <div class="meta2" id="miniMetr"></div>
-          <div style="margin-top:12px;font-weight:700;color:var(--moss);font-size:14px">Pełna karta ze źródłami →</div>
-        </div></a>
-
-
-    </div>
-    <p class="src" style="margin-top:18px">Na razie w pełni opracowany jest <b>1 gatunek</b> (gekon lamparci). Kolejne dodajemy tak samo — z danymi i źródłami.</p>
+    <div class="cards" id="cards"></div>
+    <p class="src" style="margin-top:18px" id="katalogNota"></p>
   </div>
 </section>
 
@@ -125,13 +113,36 @@
 
 <script src="dane.js"></script>
 <script>
-  // mini-metryczka na kaflu gekona — z tego samego źródła prawdy
-  const m = GEKON.metryczka;
-  const get = L => (m.find(r=>r[0]===L)||[])[1] || "";
-  document.getElementById('miniMetr').innerHTML =
-    `<span>🌡️ <b>${get('Temp. — strefa ciepła')}</b></span>`+
-    `<span>💧 <b>${get('Wilgotność').split(' ')[0]}</b></span>`+
-    `<span>📏 <b>${get('Rozmiar').split('(')[0].trim()}</b></span>`;
+  // Katalog gatunków — kafle budowane z dane/gatunki/<slug>.json (jedno źródło prawdy)
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function mv(m,L){ var r=m.find(function(x){return x[0]===L;}); return r?r[1]:""; }
+  function karta(g){
+    var m=g.katalog||{}, me=g.metryczka||[];
+    var temp = mv(me,'Temp. — strefa ciepła') || mv(me,'Temp. — strefa cieplejsza');
+    var wilg = (mv(me,'Wilgotność')||'').split(' ')[0];
+    var roz  = (mv(me,'Rozmiar')||'').split('(')[0].trim();
+    return '<a class="card" href="gatunek.html?id='+encodeURIComponent(g.slug)+'" style="color:inherit">'+
+      '<div class="ph"><img src="'+esc(m.hero)+'" alt="'+esc(m.heroAlt||g.nazwaPL)+'">'+
+      '<span class="lvl">'+esc(g.poziomKrotki||g.poziomLabel||'')+'</span>'+
+      '<span class="caption-ov">'+esc(m.heroCaption||'')+'</span></div>'+
+      '<div class="cb"><h3 class="serif">'+esc(g.nazwaPL)+'</h3><div class="lat">'+esc(g.nazwaLac)+'</div>'+
+      '<p class="ex">'+esc(m.ex||'')+'</p>'+
+      '<div class="meta2"><span>🌡️ <b>'+esc(temp)+'</b></span><span>💧 <b>'+esc(wilg)+'</b></span><span>📏 <b>'+esc(roz)+'</b></span></div>'+
+      '<div style="margin-top:12px;font-weight:700;color:var(--moss);font-size:14px">Pełna karta ze źródłami →</div>'+
+      '</div></a>';
+  }
+  loadKatalog().then(function(slugs){
+    return Promise.all(slugs.map(function(s){ return loadGatunek(s).catch(function(){ return null; }); }));
+  }).then(function(list){
+    var ok = list.filter(Boolean);
+    document.getElementById('cards').innerHTML = ok.map(karta).join("");
+    var n = ok.length;
+    var slowo = n===1?'gatunek':(n>=2&&n<=4?'gatunki':'gatunków');
+    document.getElementById('katalogNota').innerHTML =
+      'Opracowane w pełni: <b>'+n+' '+slowo+'</b> — każdy z danymi i źródłami. Kolejne dodajemy tak samo (plik danych + źródła).';
+  }).catch(function(){
+    document.getElementById('katalogNota').textContent = 'Nie udało się wczytać katalogu gatunków.';
+  });
 
   // Ciekawostka dnia — losowana deterministycznie z rekordów (ta sama przez cały dzień)
   fetch('data/rekordy.json?v=1',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(D){

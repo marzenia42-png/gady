@@ -121,19 +121,12 @@
 
 <script src="dane.js"></script>
 <script>
-  const S = GEKON.sim;
-  // zbuduj suwaki z norm gatunku
+  // Symulator i quiz działają na danych gekona lamparciego z dane/gatunki/ (jedno źródło prawdy)
   const defs = [['temp','🌡️'],['wilg','💧'],['uvb','☀️']];
-  document.getElementById('sliders').innerHTML = defs.map(([k,ic])=>{
-    const s=S[k], mid=Math.round((s.min+s.max)/2);
-    return `<div class="slider"><div class="lab"><span>${ic} ${s.etyk}</span><b id="v_${k}">${mid}${s.jedn}</b></div>
-      <input type="range" min="${s.abs[0]}" max="${s.abs[1]}" value="${mid}" id="r_${k}" oninput="sim()">
-      <div class="norm">Norma gatunku: ${s.min}–${s.max}${s.jedn} ${zrodlaSup(s.src)}</div></div>`;
-  }).join("");
-  document.getElementById('simLink').innerHTML = '· ' + zrodlaSup(['rspca','reptifiles']);
-
+  let S = null;
   function okRange(k){const s=S[k],v=+document.getElementById('r_'+k).value;return v>=s.min&&v<=s.max;}
   function sim(){
+    if(!S) return;
     defs.forEach(([k])=>{document.getElementById('v_'+k).textContent=document.getElementById('r_'+k).value+S[k].jedn;});
     const score=defs.filter(([k])=>okRange(k)).length;
     const v=document.getElementById('verdict'), c=document.getElementById('crt');
@@ -143,7 +136,23 @@
     else{v.classList.add('v-bad');v.textContent='Warunki szkodliwe dla gatunku';c.style.filter='grayscale(.6) brightness(.8)';c.style.transform='scale(.93)';}
   }
   document.querySelectorAll('.tab').forEach(x=>x.onclick=()=>{document.querySelectorAll('.tab').forEach(y=>y.classList.remove('on'));x.classList.add('on');});
-  sim();
+
+  loadGatunek('gekon-lamparci').then(function(g){
+    setZrodla(g.zrodla);
+    S = g.sim;
+    document.getElementById('sliders').innerHTML = defs.map(([k,ic])=>{
+      const s=S[k], mid=Math.round((s.min+s.max)/2);
+      return `<div class="slider"><div class="lab"><span>${ic} ${s.etyk}</span><b id="v_${k}">${mid}${s.jedn}</b></div>
+        <input type="range" min="${s.abs[0]}" max="${s.abs[1]}" value="${mid}" id="r_${k}">
+        <div class="norm">Norma gatunku: ${s.min}–${s.max}${s.jedn} ${zrodlaSup(s.src)}</div></div>`;
+    }).join("");
+    document.querySelectorAll('#sliders input[type=range]').forEach(r=>r.addEventListener('input',sim));
+    document.getElementById('simLink').innerHTML = '· ' + zrodlaSup(['rspca','reptifiles']);
+    sim();
+    renderDobrze();
+  }).catch(function(){
+    document.getElementById('verdict').textContent = 'Nie udało się wczytać norm gatunku.';
+  });
 
   // ——— interaktywny quiz — klik ujawnia poprawną odpowiedź + wyjaśnienie/źródło; wynik TYLKO lokalnie ———
   function qGet(){ try{ return JSON.parse(localStorage.getItem('ta_quiz')||'{"ans":0,"ok":0}'); }catch(e){ return {ans:0,ok:0}; } }
@@ -211,6 +220,6 @@
       }); });
     });
   }
-  renderDobrze();
+  // renderDobrze() uruchamiane po wczytaniu źródeł gatunku (w .then powyżej) oraz przy „wyczyść”.
 </script>
 </body></html>

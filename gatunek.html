@@ -2,7 +2,7 @@
 <html lang="pl"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title data-ctx="Gekon lamparci">Gekon lamparci — Terrarium Atlas</title>
+<title data-ctx="Karta gatunku">Karta gatunku — Terrarium Atlas</title>
 <link rel="stylesheet" href="styl.css">
 <style>
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:10px}
@@ -47,36 +47,25 @@
 <div class="wrap" style="padding-top:22px"><div class="kicker" id="grupaMenu">Gady · Jaszczurki</div></div>
 
 <div class="wrap" style="margin-top:14px">
-  <div class="gallery">
-    <div class="g"><img src="_media/gekon_portret.jpg" alt="Gekon lamparci — portret"><span class="caption-ov">Foto 1: G. Chernilevsky · domena publiczna</span></div>
-    <div class="g"><img src="_media/gekon_2.jpg" alt="Gekon lamparci"><span class="caption-ov">Foto 2: G. Chernilevsky · PD</span></div>
-    <div class="g ytf" id="yt"><img src="_media/gekon_3.jpg" alt="Wideo — gekon lamparci"><div class="play">▶</div><span class="caption-ov">Wideo (osadzone YouTube)</span></div>
-    <div class="g"><img src="_media/gekon_mlody.jpg" alt="Młody gekon lamparci"><span class="caption-ov">Foto 3: C. von Faber-Castell · CC BY 4.0</span></div>
-    <div class="g"><img src="_media/gekon_wylinka.jpg" alt="Gekon lamparci po wylince"><span class="caption-ov">Foto 4: Kinori · CC0 (linienie)</span></div>
-    <div class="g"><img src="_media/gekon_6.jpg" alt="Gekon lamparci — Quality image"><span class="caption-ov">Foto 5: G. Chernilevsky · domena publiczna</span></div>
-  </div>
+  <div class="gallery" id="gallery"></div>
 
   <div class="titleblock">
-    <span class="badge b-easy">Poziom: łatwy — dobry na start</span>
-    <h1 class="serif">Gekon lamparci</h1>
-    <div class="lat">Eublepharis macularius</div>
+    <span class="badge b-easy" id="poziom"></span>
+    <h1 class="serif" id="nazwaPL"></h1>
+    <div class="lat" id="nazwaLac"></div>
   </div>
 
   <div class="layout">
     <main>
       <div class="block">
         <h2 class="serif">O gatunku</h2>
-        <p>Naziemna, aktywna o zmierzchu i w nocy jaszczurka z suchych, skalistych terenów Afganistanu, Iranu,
-          Pakistanu, północno-zachodnich Indii i Nepalu. W odróżnieniu od większości gekonów ma ruchome powieki
-          i nie ma przylg na palcach, więc się nie wspina. Jeden z najpopularniejszych gadów w terrarystyce.
-          <span id="s_o"></span></p>
+        <p id="p_o"></p>
       </div>
 
       <div class="block">
         <h2 class="serif">Wymagania terrarium</h2>
         <ul id="l_terr"></ul>
-        <div class="callout"><h4>Kryjówki</h4>
-          Zapewnij min. trzy kryjówki: na ciepłej stronie, na chłodnej i <b>wilgotną kryjówkę</b> ułatwiającą linienie. <span id="s_hide"></span></div>
+        <div class="callout"><h4>Kryjówki</h4><span id="p_hide"></span></div>
       </div>
 
       <div class="block">
@@ -123,7 +112,7 @@
       <div class="metryczka"><div class="mh serif">Metryczka</div><dl id="metr"></dl></div>
       <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
         <a class="btn" href="moje-terrarium.html" style="justify-content:center">+ Dodaj do „Moje terrarium”</a>
-        <a class="btn ghost" href="quiz.html" style="justify-content:center;color:var(--moss);border-color:var(--line)">Quiz o gekonie</a>
+        <a class="btn ghost" id="quizBtn" href="quiz.html" style="justify-content:center;color:var(--moss);border-color:var(--line)">Quiz i symulator</a>
       </div>
     </aside>
   </div>
@@ -138,47 +127,98 @@
 
 <script src="dane.js"></script>
 <script>
-  const g=GEKON, m=g.metryczka, val=L=>(m.find(r=>r[0]===L)||[])[1]||"";
-  const srcOf=L=>(m.find(r=>r[0]===L)||[])[2]||[];
-  document.getElementById('grupaMenu').textContent = g.grupaMenu;
+(function(){
+  // slug gatunku z adresu (?id=...) — domyślnie gekon lamparci (stary link gatunek.html działa 1:1)
+  var slug = (new URLSearchParams(location.search).get('id') || 'gekon-lamparci').trim();
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-  // metryczka
-  document.getElementById('metr').innerHTML = m.map(r=>
-    `<div class="r"><dt>${r[0]}</dt><dd>${r[1]} ${zrodlaSup(r[2])}</dd></div>`).join("");
+  loadGatunek(slug).then(function(g){
+    setZrodla(g.zrodla);
+    var m = g.metryczka || [];
+    var val = function(L){ var r = m.find(function(x){return x[0]===L;}); return r ? r[1] : ""; };
+    var srcOf = function(L){ var r = m.find(function(x){return x[0]===L;}); return r ? r[2] : []; };
 
-  // lista: wymagania terrarium
-  document.getElementById('l_terr').innerHTML =
-    `<li><b>Typ:</b> ${g.typTerrarium} ${zrodlaSup(srcOf('Typ terrarium'))}</li>`+
-    `<li><b>Min. wymiary:</b> ${val('Min. wymiary')} ${zrodlaSup(srcOf('Min. wymiary'))}</li>`+
-    `<li><b>Podłoże:</b> ${val('Podłoże')} ${zrodlaSup(srcOf('Podłoże'))}</li>`;
-  document.getElementById('s_hide').innerHTML = zrodlaSup(srcOf('Wilgotność'));
+    // tytuł + nagłówek
+    document.title = g.nazwaPL + " — " + CONFIG.APP_NAME;
+    $('grupaMenu').textContent = g.grupaMenu;
+    $('poziom').textContent = g.poziomLabel || g.trudnosc || "";
+    if (g.badgeClass) $('poziom').className = 'badge ' + g.badgeClass;
+    $('nazwaPL').textContent = g.nazwaPL;
+    $('nazwaLac').textContent = g.nazwaLac;
+    if (g.quizLabel) $('quizBtn').textContent = g.quizLabel;
 
-  // klimat
-  document.getElementById('l_klimat').innerHTML =
-    `<li><b>Strefa ciepła (dzień):</b> ${val('Temp. — strefa ciepła')} ${zrodlaSup(srcOf('Temp. — strefa ciepła'))}</li>`+
-    `<li><b>Chłodny kąt:</b> ${val('Temp. — chłodny kąt')} ${zrodlaSup(srcOf('Temp. — chłodny kąt'))}</li>`+
-    `<li><b>Noc:</b> ${val('Temp. nocą')} ${zrodlaSup(srcOf('Temp. nocą'))}</li>`+
-    `<li><b>Wilgotność:</b> ${val('Wilgotność')} ${zrodlaSup(srcOf('Wilgotność'))}</li>`+
-    `<li><b>UVB:</b> ${val('Oświetlenie UVB')} ${zrodlaSup(srcOf('Oświetlenie UVB'))}</li>`;
+    // galeria (zdjęcia + ewentualna fasada wideo YouTube)
+    $('gallery').innerHTML = (g.galeria || []).map(function(it){
+      if (it.video) {
+        return '<div class="g ytf" data-yt="'+esc(it.video)+'" data-alt="'+esc(it.alt)+'">'+
+          '<img src="'+esc(it.src)+'" alt="'+esc(it.alt)+'"><div class="play">▶</div>'+
+          '<span class="caption-ov">'+esc(it.caption)+'</span></div>';
+      }
+      return '<div class="g"><img src="'+esc(it.src)+'" alt="'+esc(it.alt)+'">'+
+        '<span class="caption-ov">'+esc(it.caption)+'</span></div>';
+    }).join("");
+    var yt = $('gallery').querySelector('.ytf');
+    if (yt) yt.addEventListener('click', function(){
+      var id = this.getAttribute('data-yt'), a = this.getAttribute('data-alt');
+      this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1" title="'+a+'" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    });
 
-  document.getElementById('p_dieta').innerHTML = `${val('Dieta')} ${zrodlaSup(srcOf('Dieta'))}`;
-  document.getElementById('p_supl').innerHTML  = `${val('Suplementacja')} ${zrodlaSup(srcOf('Suplementacja'))}`;
-  document.getElementById('p_lin').innerHTML   = `${g.linienie.t} ${zrodlaSup(g.linienie.src)}`;
-  document.getElementById('p_auto').innerHTML  = `${g.autotomia.t} ${zrodlaSup(g.autotomia.src)}`;
-  document.getElementById('p_chor').innerHTML  = `${g.choroby.t} ${zrodlaSup(g.choroby.src)}`;
-  document.getElementById('p_alarm').innerHTML = `${g.objawyAlarm.t} ${zrodlaSup(g.objawyAlarm.src)}`;
-  document.getElementById('p_prz').innerHTML   = `${g.przepisy.t} ${zrodlaSup(g.przepisy.src)}`;
+    // opis + kryjówki
+    $('p_o').innerHTML = g.opisHTML || "";
+    $('p_hide').innerHTML = (g.kryjowkiHTML || "") + " " + zrodlaSup(g.kryjowkiSrc || []);
 
-  document.getElementById('l_bledy').innerHTML = g.bledy.map(b=>
-    `<div class="mistake"><span class="x">✕</span><div>${b[0]} ${zrodlaSup(b[1])}</div></div>`).join("");
+    // metryczka
+    $('metr').innerHTML = m.map(function(r){
+      return '<div class="r"><dt>'+r[0]+'</dt><dd>'+r[1]+' '+zrodlaSup(r[2])+'</dd></div>';
+    }).join("");
 
-  // pełna lista źródeł (wszystkie użyte klucze)
-  const allKeys = [].concat(...m.map(r=>r[2]), g.linienie.src,g.autotomia.src,g.choroby.src,g.objawyAlarm.src,g.przepisy.src, ...g.bledy.map(b=>b[1]));
-  document.getElementById('l_src').innerHTML = zrodlaLista(allKeys);
+    // wymagania terrarium
+    $('l_terr').innerHTML =
+      '<li><b>Typ:</b> '+g.typTerrarium+' '+zrodlaSup(srcOf('Typ terrarium'))+'</li>'+
+      '<li><b>Min. wymiary:</b> '+val('Min. wymiary')+' '+zrodlaSup(srcOf('Min. wymiary'))+'</li>'+
+      '<li><b>Podłoże:</b> '+val('Podłoże')+' '+zrodlaSup(srcOf('Podłoże'))+'</li>';
 
-  // fasada wideo — iframe dopiero po kliknięciu (lekko, prywatnie)
-  document.getElementById('yt').addEventListener('click',function(){
-    this.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/ahVvzzscGsg?autoplay=1" title="Gekon lamparci — wideo" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    // klimat — buduj tylko z pól, które gatunek faktycznie ma (bez źródła = pomiń)
+    var klimat = [
+      ['Strefa ciepła (dzień):', 'Temp. — strefa ciepła'],
+      ['Strefa cieplejsza:',     'Temp. — strefa cieplejsza'],
+      ['Chłodny kąt:',           'Temp. — chłodny kąt'],
+      ['Noc:',                   'Temp. nocą'],
+      ['Maks.:',                 'Maks. temperatura'],
+      ['Wilgotność:',            'Wilgotność'],
+      ['UVB:',                   'Oświetlenie UVB']
+    ];
+    $('l_klimat').innerHTML = klimat.filter(function(k){ return val(k[1]); }).map(function(k){
+      return '<li><b>'+k[0]+'</b> '+val(k[1])+' '+zrodlaSup(srcOf(k[1]))+'</li>';
+    }).join("");
+
+    $('p_dieta').innerHTML = val('Dieta') + ' ' + zrodlaSup(srcOf('Dieta'));
+    $('p_supl').innerHTML  = val('Suplementacja') + ' ' + zrodlaSup(srcOf('Suplementacja'));
+    $('p_lin').innerHTML   = g.linienie.t + ' ' + zrodlaSup(g.linienie.src);
+    $('p_auto').innerHTML  = g.autotomia.t + ' ' + zrodlaSup(g.autotomia.src);
+    $('p_chor').innerHTML  = g.choroby.t + ' ' + zrodlaSup(g.choroby.src);
+    $('p_alarm').innerHTML = g.objawyAlarm.t + ' ' + zrodlaSup(g.objawyAlarm.src);
+    $('p_prz').innerHTML   = g.przepisy.t + ' ' + zrodlaSup(g.przepisy.src);
+
+    $('l_bledy').innerHTML = (g.bledy || []).map(function(b){
+      return '<div class="mistake"><span class="x">✕</span><div>'+b[0]+' '+zrodlaSup(b[1])+'</div></div>';
+    }).join("");
+
+    // pełna lista źródeł (wszystkie użyte klucze)
+    var allKeys = [];
+    m.forEach(function(r){ allKeys = allKeys.concat(r[2] || []); });
+    ['linienie','autotomia','choroby','objawyAlarm','przepisy'].forEach(function(k){ allKeys = allKeys.concat((g[k]||{}).src || []); });
+    (g.bledy || []).forEach(function(b){ allKeys = allKeys.concat(b[1] || []); });
+    allKeys = allKeys.concat(g.kryjowkiSrc || []);
+    $('l_src').innerHTML = zrodlaLista(allKeys);
+
+    // link „Dodaj do Moje terrarium” z gatunkiem w adresie
+    var addBtn = document.querySelector('aside .btn[href="moje-terrarium.html"]');
+    if (addBtn) addBtn.setAttribute('href', 'moje-terrarium.html?id=' + encodeURIComponent(g.slug));
+  }).catch(function(){
+    document.querySelector('main').innerHTML = '<div class="block"><p>Nie udało się wczytać danych gatunku. Wróć do <a href="index.html#katalog">katalogu gatunków</a>.</p></div>';
   });
+})();
 </script>
 </body></html>

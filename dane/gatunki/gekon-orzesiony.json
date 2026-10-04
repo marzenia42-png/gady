@@ -1,0 +1,70 @@
+{
+  "id": "gekon-orzesiony",
+  "slug": "gekon-orzesiony",
+  "nazwaPL": "Gekon orzęsiony",
+  "nazwaLac": "Correlophus ciliatus",
+  "grupa": "Jaszczurka (gad)",
+  "grupaMenu": "Gady · Jaszczurki",
+  "trudnosc": "łatwy — dobry na start",
+  "poziomLabel": "Poziom: łatwy — dobry na start",
+  "poziomKrotki": "Poziom: łatwy",
+  "badgeClass": "b-easy",
+  "typTerrarium": "nadrzewne / pionowe (wspinaczka)",
+  "quizLabel": "Quiz i symulator",
+  "katalog": {
+    "ex": "Nadrzewna jaszczurka z Nowej Kaledonii, aktywna nocą. Łatwa w opiece, nie potrzebuje wysokich temperatur.",
+    "hero": "_media/orzesiony_portret.jpg",
+    "heroAlt": "Gekon orzęsiony",
+    "heroCaption": "Foto: Michael McConville · CC BY 4.0"
+  },
+  "opisHTML": "Nadrzewna, aktywna o zmierzchu i w nocy jaszczurka endemiczna dla lasów południowej Nowej Kaledonii — uznawano ją za wymarłą, odkryto ponownie w 1994 r. Nad oczami ma rzędy kolców przypominające rzęsy, od których pochodzi nazwa. Nie ma powiek — oko chroni przezroczysta łuska, którą gekon zlizuje językiem. Palce i koniec chwytnego ogona pokrywają drobne przylgi (setae) pozwalające wspinać się po gładkich powierzchniach. Zrzucony ogon — w odróżnieniu od gekona lamparciego — nie odrasta.",
+  "galeria": [
+    { "src": "_media/orzesiony_portret.jpg", "alt": "Gekon orzęsiony — portret", "caption": "Foto 1: Michael McConville · CC BY 4.0" },
+    { "src": "_media/orzesiony_glowa.jpg", "alt": "Głowa gekona orzęsionego — „rzęsy”", "caption": "Foto 2: Michael McConville · CC BY 4.0" },
+    { "src": "_media/orzesiony_2.jpg", "alt": "Gekon orzęsiony", "caption": "Foto 3: Jazium · CC BY-SA 4.0" },
+    { "src": "_media/orzesiony_terrarium.jpg", "alt": "Gekon orzęsiony w terrarium", "caption": "Foto 4: KKPCW (Kyu3) · CC BY-SA 4.0" },
+    { "src": "_media/orzesiony_mlody.jpg", "alt": "Młody gekon orzęsiony", "caption": "Foto 5: DigitalLem0n · CC BY-SA 4.0" },
+    { "src": "_media/orzesiony_grzbiet.jpg", "alt": "Grzbiet i grzebień gekona orzęsionego", "caption": "Foto 6: Michael McConville · CC BY 4.0" }
+  ],
+  "kryjowkiHTML": "Zapewnij dużo gałęzi, lian i roślin (żywych lub sztucznych) oraz kilka miejsc do ukrycia — gekon orzęsiony to zwierzę nadrzewne i chowa się wśród liści.",
+  "kryjowkiSrc": ["reptifiles"],
+  "metryczka": [
+    ["Grupa", "jaszczurka (gad)", ["wiki"]],
+    ["Rozmiar", "20–25 cm z ogonem (ogon 10–15 cm)", ["wiki"]],
+    ["Długość życia", "15–20+ lat w niewoli", ["wiki", "petmd"]],
+    ["Typ terrarium", "nadrzewne / pionowe", ["reptifiles"]],
+    ["Min. wymiary", "dorosły min. 45×45×60 cm (wysokość ważniejsza niż podstawa)", ["reptifiles"]],
+    ["Temp. — strefa cieplejsza", "22–28°C (źródła podają 22–24°C i 28–29°C)", ["reptifiles", "petmd"]],
+    ["Temp. — chłodny kąt", "20–24°C", ["reptifiles", "petmd"]],
+    ["Temp. nocą", "18–22°C", ["reptifiles"]],
+    ["Maks. temperatura", "nie przekraczać ~30°C (ryzyko przegrzania)", ["reptifiles", "petmd"]],
+    ["Wilgotność", "60–80% (osusz do ~40–50% przed kolejnym zraszaniem)", ["reptifiles", "petmd"]],
+    ["Oświetlenie UVB", "Ferguson strefa 1, UVI ~1–2 przy gałęzi, ~10–12 h", ["reptifiles", "petmd"]],
+    ["Podłoże", "trzymające wilgoć (ziemia/kokos); dużo gałęzi i roślin do wspinania", ["reptifiles"]],
+    ["Dieta", "gotowy proszek dla gekonów orzęsionych (baza) + owady; dorosłe proszek co 2–3 dni, owady 0–1×/tydz.", ["reptifiles", "petmd"]],
+    ["Suplementacja", "wapń + D3 na owadach przed karmieniem; multiwitamina 1–2×/tydz.", ["petmd"]],
+    ["Trudność", "łatwy", ["reptifiles"]]
+  ],
+  "autotomia": { "t": "Może odrzucić ogon w obronie — u tego gatunku ogon NIE odrasta. Dorosłe gekony orzęsione często żyją bez ogona i funkcjonują normalnie.", "src": ["wiki"] },
+  "linienie": { "t": "Linieje regularnie; odpowiednia wilgotność ułatwia zrzucanie skóry. Pilnuj resztek wylinki na palcach i wokół oczu.", "src": ["reptifiles"] },
+  "choroby": { "t": "Najczęstsze: metaboliczna choroba kości (MBD) z niedoboru wapnia/D3, odwodnienie i problemy z linieniem przy zbyt niskiej wilgotności, przegrzanie powyżej ~30°C.", "src": ["reptifiles", "petmd"] },
+  "objawyAlarm": { "t": "Apatia, brak apetytu, miękkie/wykrzywione kości, zapadnięte oczy (odwodnienie), zaleganie wylinki na palcach lub oczach, objawy przegrzania → weterynarz od zwierząt egzotycznych. Serwis nie stawia diagnoz ani nie podaje leków.", "src": ["reptifiles", "petmd"] },
+  "przepisy": { "t": "Gatunek endemiczny dla Nowej Kaledonii; w naturze IUCN klasyfikuje go jako narażony (Vulnerable), zwierzęta w terrarystyce pochodzą z hodowli. Nie figuruje obecnie w załącznikach CITES (status jest oceniany). W Polsce osobniki z hodowli nie wymagają rejestracji — status potwierdź aktualnym wykazem przed zakupem.", "src": ["wiki", "cites"] },
+  "bledy": [
+    ["Zbyt wysoka temperatura (powyżej ~30°C) → przegrzanie, groźne dla gatunku.", ["reptifiles", "petmd"]],
+    ["Za niska wilgotność → zaleganie wylinki i odwodnienie.", ["reptifiles"]],
+    ["Stałe zamoczenie bez osuszania podłoża → pleśń i infekcje.", ["reptifiles"]],
+    ["Liczenie na regenerację ogona — zrzucony ogon u tego gatunku nie odrasta.", ["wiki"]]
+  ],
+  "sim": {
+    "temp": { "min": 22, "max": 28, "abs": [15, 40], "jedn": "°C", "etyk": "Temperatura (strefa cieplejsza)", "src": ["reptifiles", "petmd"] },
+    "wilg": { "min": 60, "max": 80, "abs": [20, 95], "jedn": "%", "etyk": "Wilgotność (otoczenie)", "src": ["reptifiles", "petmd"] },
+    "uvb": { "min": 1, "max": 2, "abs": [0, 4], "jedn": " UVI", "etyk": "UVB (UVI przy gałęzi)", "src": ["reptifiles", "petmd"] }
+  },
+  "zrodla": {
+    "reptifiles": { "t": "ReptiFiles — Crested Gecko Care (renomowany poradnik hodowlany)", "u": "https://reptifiles.com/crested-gecko-care/" },
+    "petmd": { "t": "PetMD — Crested Gecko Care Sheet (recenzja weterynaryjna)", "u": "https://www.petmd.com/reptile/crested-gecko-care-sheet" },
+    "wiki": { "t": "Wikipedia — Crested gecko (fakty ogólne: systematyka, zasięg, biologia)", "u": "https://en.wikipedia.org/wiki/Crested_gecko" },
+    "cites": { "t": "CITES — wykaz gatunków (Checklist)", "u": "https://checklist.cites.org/" }
+  }
+}

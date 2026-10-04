@@ -11,7 +11,7 @@ FILES=$(git ls-files '*.html' '*.js' '*.json' '*.css' '*.md' '*.txt')
 [ -z "$FILES" ] && { echo "Brak plików do sprawdzenia."; exit 0; }
 
 # Wzorce zabronione: token {APP}, dowolny {TOKEN} wielkimi literami, napisy "w toku".
-PATTERNS='(\{APP\}|\{[A-Z_]{2,}\}|w przygotowaniu|wybór w przygotowaniu|docelowo możliwe|W budowie)'
+PATTERNS='(\{APP\}|\{[A-Z_]{2,}\}|w przygotowaniu|wybór w przygotowaniu|docelowo możliwe|W budowie|wkrótce|Ładowanie|Ladowanie)'
 
 HITS=$(grep -nEI "$PATTERNS" $FILES 2>/dev/null)
 if [ -n "$HITS" ]; then

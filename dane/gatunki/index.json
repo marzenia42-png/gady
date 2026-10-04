@@ -1,0 +1,4 @@
+{
+  "_opis": "Spis gatunków w kolejności wyświetlania. Nowy gatunek = dodaj slug tutaj + plik <slug>.json w tym katalogu. Zero zmian w HTML.",
+  "gatunki": ["gekon-lamparci", "gekon-orzesiony"]
+}

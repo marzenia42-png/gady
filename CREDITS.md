@@ -13,6 +13,12 @@
 | `_media/gekon_mlody.jpg` | Młody gekon (~6 mies., karta foto 3, poradnik) | Christian von Faber-Castell | **CC BY 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:EUBLEPHARIS-MACULARIUS_Leopard-Gecko_Leopardgecko_201705276007.jpg |
 | `_media/gekon_wylinka.jpg` | Gekon po wylince (karta foto 4, quiz) | Kinori | **CC0** (domena publiczna) | https://commons.wikimedia.org/wiki/File:Eublepharis_macularius_after_molting.jpg |
 | `_media/gekon_6.jpg` | Gekon lamparci (karta foto 5 — Quality image) | George Chernilevsky | **Domena publiczna (PD)** | https://commons.wikimedia.org/wiki/File:Eublepharis_macularius_2009_G8.jpg |
+| `_media/orzesiony_portret.jpg` | Gekon orzęsiony — portret (hero, karta foto 1) | Michael McConville | **CC BY 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Crested_gecko.jpg |
+| `_media/orzesiony_glowa.jpg` | Gekon orzęsiony — głowa, „rzęsy” (karta foto 2) | Michael McConville | **CC BY 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Crested_gecko_face_macro.jpg |
+| `_media/orzesiony_2.jpg` | Gekon orzęsiony (karta foto 3) | Jazium | **CC BY-SA 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Lil_B_the_Crested_Gecko.jpg |
+| `_media/orzesiony_terrarium.jpg` | Gekon orzęsiony w terrarium (karta foto 4) | KKPCW (Kyu3) | **CC BY-SA 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Correlophus_ciliatus_in_aquarium.jpg |
+| `_media/orzesiony_mlody.jpg` | Młody gekon orzęsiony (karta foto 5) | DigitalLem0n | **CC BY-SA 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Baby_crested_gecko.jpg |
+| `_media/orzesiony_grzbiet.jpg` | Gekon orzęsiony — grzbiet i grzebień (karta foto 6) | Michael McConville | **CC BY 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Crested_gecko_back.jpg |
 
 ## Rekordy i dziwy (sekcja „Rekordy")
 - **Źródła liczb rekordów:** każdy rekord ma link do źródła w `data/rekordy.json` (Guinness World Records, Australian Museum, Natural History Museum, Scientific Reports, Royal Society Open Science, National Geographic, Re:wild). Rozbieżności = zakres.
@@ -39,6 +45,18 @@
 
 **Rozbieżności między źródłami** pokazujemy w karcie jako **zakres** (np. terrarium min. 60×40×30 cm wg RSPCA,
 zalecane ≥ 90×45×45 cm wg ReptiFiles; strefa ciepła 28–36°C łącząc RSPCA i ReptiFiles).
+
+### Gekon orzęsiony (Correlophus ciliatus) — źródła liczb
+
+| Klucz | Źródło | Zakres danych |
+|---|---|---|
+| `reptifiles` | ReptiFiles — Crested Gecko Care — https://reptifiles.com/crested-gecko-care/ | wymiary (min. 45×45×60 cm), temperatura (strefa/kąt/noc), maks. ~30°C, wilgotność 60–80%, UVB (Ferguson zona 1, UVI 1–2), dieta, podłoże |
+| `petmd` | PetMD — Crested Gecko Care Sheet (recenzja weterynaryjna) — https://www.petmd.com/reptile/crested-gecko-care-sheet | długość życia, temperatura, wilgotność, dieta, suplementacja (wapń+D3, multiwitamina), UVB, ogon nie odrasta |
+| `wiki` | Wikipedia — Crested gecko — https://en.wikipedia.org/wiki/Crested_gecko | **tylko fakty ogólne:** zasięg (Nowa Kaledonia), odkrycie ponowne 1994, rozmiar, brak powiek, przylgi (setae), IUCN Vulnerable, ogon nieregenerujący |
+| `cites` | CITES — Checklist — https://checklist.cites.org/ | status prawny / rejestracja (obecnie poza załącznikami, status oceniany) |
+
+Rozbieżność temperatur (ReptiFiles podaje basking 28–29°C, PetMD ~22–24°C) pokazana w karcie jako zakres
+„22–28°C” z obydwoma źródłami; w symulatorze norma gatunku 22–28°C.
 
 ---
 
