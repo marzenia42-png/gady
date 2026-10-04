@@ -1,0 +1,69 @@
+{
+  "id": "agama-brodata",
+  "slug": "agama-brodata",
+  "nazwaPL": "Agama brodata",
+  "nazwaLac": "Pogona vitticeps",
+  "grupa": "Jaszczurka (gad)",
+  "grupaMenu": "Gady · Jaszczurki",
+  "trudnosc": "łatwy–umiarkowany",
+  "poziomLabel": "Poziom: łatwy–umiarkowany",
+  "poziomKrotki": "Poziom: umiarkowany",
+  "badgeClass": "b-mid",
+  "typTerrarium": "pustynne / suche, naziemne (dużo miejsca w poziomie)",
+  "quizLabel": "Quiz i symulator",
+  "katalog": {
+    "ex": "Dzienna jaszczurka z suchych terenów Australii. Wszystkożerna i towarzyska — wymaga mocnego UVB i wysokiej temperatury wygrzewania.",
+    "hero": "_media/agama_portret.jpg",
+    "heroAlt": "Agama brodata",
+    "heroCaption": "Foto: Donald Hobern · CC BY 2.0"
+  },
+  "opisHTML": "Dzienna (aktywna za dnia), naziemna jaszczurka z suchych, półpustynnych i zadrzewionych terenów środkowej Australii. Nazwa pochodzi od kolczastych łusek pod gardłem — „brody”, którą zwierzę nadyma i czernieje przy pokazie lub stresie. Wygrzewa się na wyniesieniach, jest wszystkożerna, a przy dobrej opiece bywa spokojna i oswojona. Potrzebuje silnego oświetlenia UVB i wyraźnego gradientu temperatury z gorącym punktem wygrzewania.",
+  "galeria": [
+    { "src": "_media/agama_portret.jpg", "alt": "Agama brodata — portret", "caption": "Foto 1: Donald Hobern · CC BY 2.0" },
+    { "src": "_media/agama_2.jpg", "alt": "Agama brodata (Pogona vitticeps)", "caption": "Foto 2: Will Brown · CC BY 2.0" },
+    { "src": "_media/agama_broda.jpg", "alt": "Agama brodata — nadęta „broda”", "caption": "Foto 3: Obolton · domena publiczna" },
+    { "src": "_media/agama_natura.jpg", "alt": "Agama brodata w naturalnym środowisku (Australia)", "caption": "Foto 4: Chris Lindorff · CC BY 2.5 AU" },
+    { "src": "_media/agama_studio.jpg", "alt": "Agama brodata", "caption": "Foto 5: G. Chernilevsky · domena publiczna" },
+    { "src": "_media/agama_morf.jpg", "alt": "Agama brodata — ubarwienie", "caption": "Foto 6: Will Brown · CC BY 2.0" }
+  ],
+  "kryjowkiHTML": "Zapewnij gorący punkt wygrzewania na wyniesieniu (kamień/konar) oraz cień i kryjówkę po chłodnej stronie, żeby zwierzę mogło regulować temperaturę ciała. Terrarium poziome, z miejscem do chodzenia.",
+  "kryjowkiSrc": ["reptifiles"],
+  "metryczka": [
+    ["Grupa", "jaszczurka (gad)", ["wiki"]],
+    ["Rozmiar", "do ~60 cm z ogonem (ogon ~połowa długości)", ["petmd", "wiki"]],
+    ["Długość życia", "8–10+ lat w niewoli", ["petmd"]],
+    ["Typ terrarium", "pustynne / naziemne, poziome", ["reptifiles"]],
+    ["Min. wymiary", "dorosły min. 120×60×60 cm (4×2×2 ft); zalecane ≥ 180×60×60 cm", ["reptifiles", "petmd"]],
+    ["Temp. — strefa grzania", "38–45°C (powierzchnia wygrzewania)", ["reptifiles", "petmd"]],
+    ["Temp. — chłodny kąt", "24–29°C", ["reptifiles", "petmd"]],
+    ["Wilgotność", "30–50% (środowisko suche)", ["reptifiles", "petmd"]],
+    ["Oświetlenie UVB", "Ferguson strefa 3–4, UVI ~3–5 w strefie grzania, ~10–12 h", ["reptifiles", "petmd"]],
+    ["Podłoże", "dorosłe: twarde/ziemia ubita; luźny piasek u młodych = ryzyko impakcji", ["reptifiles"]],
+    ["Dieta", "wszystkożerna; młode ~70% owady / 30% rośliny, dorosłe ~20–30% owady / 70–80% rośliny", ["reptifiles", "petmd"]],
+    ["Karmienie", "młode owady codziennie; dorosłe owady 3–4×/tydz., świeże rośliny codziennie", ["petmd"]],
+    ["Suplementacja", "wapń z D3 i bez D3 naprzemiennie na owadach; multiwitamina ~1×/tydz.", ["petmd"]],
+    ["Trudność", "łatwy–umiarkowany", ["reptifiles"]]
+  ],
+  "autotomia": { "t": "W odróżnieniu od gekonów agama brodata nie odrzuca łatwo ogona — utracony fragment ogona nie odrasta.", "src": ["wiki"] },
+  "linienie": { "t": "Linieje przez całe życie (młode częściej, dorosłe partiami). Zapewnij szorstkie elementy do ocierania; nie odrywaj niezłuszczonej skóry na siłę.", "src": ["reptifiles"] },
+  "choroby": { "t": "Najczęstsze: metaboliczna choroba kości (MBD) z niedoboru wapnia/UVB, impakcja (zatkanie przewodu pokarmowego) od luźnego podłoża, przegrzanie i oparzenia od grzałek bez termostatu, otyłość przy zbyt owadziej diecie u dorosłych.", "src": ["reptifiles", "petmd"] },
+  "objawyAlarm": { "t": "Apatia, brak apetytu, miękkie/wykrzywione kości i drżenia (MBD), zaparcia lub biegunka, zaleganie wylinki, trudności z poruszaniem → weterynarz od zwierząt egzotycznych. Serwis nie stawia diagnoz ani nie podaje leków.", "src": ["reptifiles", "petmd"] },
+  "przepisy": { "t": "Gatunek pospolity w hodowli; pochodzi z Australii, skąd eksport dzikich osobników jest zakazany — zwierzęta w handlu pochodzą z hodowli. Nie figuruje w załącznikach CITES. W Polsce nie wymaga rejestracji — status potwierdź aktualnym wykazem przed zakupem.", "src": ["wiki", "cites"] },
+  "bledy": [
+    ["Brak lub zbyt słabe UVB → krzywica (MBD).", ["reptifiles", "petmd"]],
+    ["Grzałka/żarówka bez termostatu → przegrzanie i oparzenia.", ["reptifiles"]],
+    ["Karmienie dorosłej agamy głównie owadami → otyłość; dorosła je przede wszystkim rośliny.", ["reptifiles", "petmd"]],
+    ["Luźny piasek u młodych → ryzyko impakcji (zatkania jelit).", ["reptifiles"]]
+  ],
+  "sim": {
+    "temp": { "min": 38, "max": 45, "abs": [20, 55], "jedn": "°C", "etyk": "Temperatura (strefa grzania)", "src": ["reptifiles", "petmd"] },
+    "wilg": { "min": 30, "max": 50, "abs": [10, 90], "jedn": "%", "etyk": "Wilgotność (otoczenie)", "src": ["reptifiles", "petmd"] },
+    "uvb": { "min": 3, "max": 5, "abs": [0, 8], "jedn": " UVI", "etyk": "UVB (UVI w strefie grzania)", "src": ["reptifiles"] }
+  },
+  "zrodla": {
+    "reptifiles": { "t": "ReptiFiles — Bearded Dragon Care (renomowany poradnik hodowlany)", "u": "https://reptifiles.com/bearded-dragon-care/" },
+    "petmd": { "t": "PetMD — Bearded Dragon Care Sheet (recenzja weterynaryjna)", "u": "https://www.petmd.com/reptile/bearded-dragon-care-sheet" },
+    "wiki": { "t": "Wikipedia — Central bearded dragon (fakty ogólne: systematyka, zasięg, biologia)", "u": "https://en.wikipedia.org/wiki/Central_bearded_dragon" },
+    "cites": { "t": "CITES — wykaz gatunków (Checklist)", "u": "https://checklist.cites.org/" }
+  }
+}

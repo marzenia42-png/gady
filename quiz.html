@@ -100,7 +100,7 @@
     <div class="panel">
       <div class="ph"><span class="ic">🎚️</span><h3 class="serif">Symulator terrarium</h3></div>
       <div class="pc">
-        <p class="src" style="margin-top:0">Gatunek: <b style="color:var(--ink)">Gekon lamparci</b> ·
+        <p class="src" style="margin-top:0">Gatunek: <b style="color:var(--ink)" id="simGat">Gekon lamparci</b> ·
           oceniane wg danych z karty gatunku <span id="simLink"></span></p>
         <div class="creature" id="crt">🦎</div>
         <div class="verdict v-ok" id="verdict">Warunki prawidłowe dla gatunku ✓</div>
@@ -137,21 +137,33 @@
   }
   document.querySelectorAll('.tab').forEach(x=>x.onclick=()=>{document.querySelectorAll('.tab').forEach(y=>y.classList.remove('on'));x.classList.add('on');});
 
-  loadGatunek('gekon-lamparci').then(function(g){
-    setZrodla(g.zrodla);
+  // wybrany gatunek z adresu (?id=...) — symulator czyta jego normy; domyślnie gekon lamparci
+  var simSlug = (new URLSearchParams(location.search).get('id') || 'gekon-lamparci').trim();
+  // lokalny helper przypisów z mapy źródeł DANEGO gatunku (bez globalnego ZRODLA — brak kolizji kluczy między gatunkami)
+  function supZ(z, keys){ return (keys||[]).map(function(k){ var e=z&&z[k]; return e?'<a class="refnum" href="'+e.u+'" target="_blank" rel="noopener" title="'+e.t+'">['+k+']</a>':''; }).join(''); }
+
+  // Symulator — normy wybranego gatunku
+  loadGatunek(simSlug).then(function(g){
     S = g.sim;
+    document.getElementById('simGat').textContent = g.nazwaPL;
     document.getElementById('sliders').innerHTML = defs.map(([k,ic])=>{
       const s=S[k], mid=Math.round((s.min+s.max)/2);
       return `<div class="slider"><div class="lab"><span>${ic} ${s.etyk}</span><b id="v_${k}">${mid}${s.jedn}</b></div>
         <input type="range" min="${s.abs[0]}" max="${s.abs[1]}" value="${mid}" id="r_${k}">
-        <div class="norm">Norma gatunku: ${s.min}–${s.max}${s.jedn} ${zrodlaSup(s.src)}</div></div>`;
+        <div class="norm">Norma gatunku: ${s.min}–${s.max}${s.jedn} ${supZ(g.zrodla, s.src)}</div></div>`;
     }).join("");
     document.querySelectorAll('#sliders input[type=range]').forEach(r=>r.addEventListener('input',sim));
-    document.getElementById('simLink').innerHTML = '· ' + zrodlaSup(['rspca','reptifiles']);
+    var simKeys = [...new Set([].concat(S.temp.src||[], S.wilg.src||[], S.uvb.src||[]))];
+    document.getElementById('simLink').innerHTML = '· ' + supZ(g.zrodla, simKeys);
     sim();
-    renderDobrze();
   }).catch(function(){
     document.getElementById('verdict').textContent = 'Nie udało się wczytać norm gatunku.';
+  });
+
+  // Quizy „Jaki to gatunek?" / „Dobrze czy źle?" opierają się na gekonie lamparcim (demo wiedzy) — ich źródła z mapy gekona
+  loadGatunek('gekon-lamparci').then(function(g){
+    setZrodla(g.zrodla);
+    renderDobrze();
   });
 
   // ——— interaktywny quiz — klik ujawnia poprawną odpowiedź + wyjaśnienie/źródło; wynik TYLKO lokalnie ———

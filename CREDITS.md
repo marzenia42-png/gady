@@ -19,6 +19,12 @@
 | `_media/orzesiony_terrarium.jpg` | Gekon orzęsiony w terrarium (karta foto 4) | KKPCW (Kyu3) | **CC BY-SA 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Correlophus_ciliatus_in_aquarium.jpg |
 | `_media/orzesiony_mlody.jpg` | Młody gekon orzęsiony (karta foto 5) | DigitalLem0n | **CC BY-SA 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Baby_crested_gecko.jpg |
 | `_media/orzesiony_grzbiet.jpg` | Gekon orzęsiony — grzbiet i grzebień (karta foto 6) | Michael McConville | **CC BY 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Crested_gecko_back.jpg |
+| `_media/agama_portret.jpg` | Agama brodata — portret (hero, karta foto 1) | Donald Hobern | **CC BY 2.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Pogona_vitticeps_(32494027291).jpg |
+| `_media/agama_2.jpg` | Agama brodata (karta foto 2) | Will Brown | **CC BY 2.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Central_Bearded_Dragon_(22477417543).jpg |
+| `_media/agama_broda.jpg` | Agama brodata — nadęta „broda” (karta foto 3) | Obolton | **Domena publiczna (PD)** | https://commons.wikimedia.org/wiki/File:Bearded_Dragon_showing_beard.jpg |
+| `_media/agama_natura.jpg` | Agama brodata w naturze, Australia (karta foto 4) | Chris Lindorff | **CC BY 2.5 AU** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Nitre_bush_and_dragon_from_NatureShare.jpg |
+| `_media/agama_studio.jpg` | Agama brodata (karta foto 5) | George Chernilevsky | **Domena publiczna (PD)** | https://commons.wikimedia.org/wiki/File:Pogona_vitticeps_2009_G1.jpg |
+| `_media/agama_morf.jpg` | Agama brodata — ubarwienie (karta foto 6) | Will Brown | **CC BY 2.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Central_Bearded_Dragon_2_(23084981452).jpg |
 
 ## Rekordy i dziwy (sekcja „Rekordy")
 - **Źródła liczb rekordów:** każdy rekord ma link do źródła w `data/rekordy.json` (Guinness World Records, Australian Museum, Natural History Museum, Scientific Reports, Royal Society Open Science, National Geographic, Re:wild). Rozbieżności = zakres.
@@ -57,6 +63,18 @@ zalecane ≥ 90×45×45 cm wg ReptiFiles; strefa ciepła 28–36°C łącząc RS
 
 Rozbieżność temperatur (ReptiFiles podaje basking 28–29°C, PetMD ~22–24°C) pokazana w karcie jako zakres
 „22–28°C” z obydwoma źródłami; w symulatorze norma gatunku 22–28°C.
+
+### Agama brodata (Pogona vitticeps) — źródła liczb
+
+| Klucz | Źródło | Zakres danych |
+|---|---|---|
+| `reptifiles` | ReptiFiles — Bearded Dragon Care — https://reptifiles.com/bearded-dragon-care/ | wymiary (min. 120×60×60 cm), strefa grzania 38–45°C, chłodny kąt, UVB (Ferguson zona 3–4, UVI 3–5), podłoże, dieta (proporcje wiek), linienie |
+| `petmd` | PetMD — Bearded Dragon Care Sheet (recenzja weterynaryjna) — https://www.petmd.com/reptile/bearded-dragon-care-sheet | długość życia (8–10 lat), rozmiar (~60 cm), basking ~38°C, chłodny kąt ~24°C, wilgotność 30–50%, UVB 10–12 h, dieta (70/30 młode, 20–30/70–80 dorosłe), suplementacja wapń+D3/multiwitamina |
+| `wiki` | Wikipedia — Central bearded dragon — https://en.wikipedia.org/wiki/Central_bearded_dragon | **tylko fakty ogólne:** zasięg (Australia), tryb dzienny, „broda”, rozmiar, brak regeneracji ogona |
+| `cites` | CITES — Checklist — https://checklist.cites.org/ | status prawny (poza załącznikami; eksport z Australii zakazany — zwierzęta z hodowli) |
+
+Rozbieżność temperatur strefy grzania (ReptiFiles 42–45°C vs PetMD ~38°C) pokazana jako zakres „38–45°C”
+z obydwoma przypisami; w symulatorze norma gatunku 38–45°C. VCA nie użyte — źródłem weterynaryjnym jest PetMD.
 
 ---
 
