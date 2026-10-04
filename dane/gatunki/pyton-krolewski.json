@@ -1,0 +1,69 @@
+{
+  "id": "pyton-krolewski",
+  "slug": "pyton-krolewski",
+  "nazwaPL": "Pyton królewski",
+  "nazwaLac": "Python regius",
+  "grupa": "Wąż (gad)",
+  "grupaMenu": "Gady · Węże",
+  "trudnosc": "łatwy",
+  "poziomLabel": "Poziom: łatwy",
+  "poziomKrotki": "Poziom: łatwy",
+  "badgeClass": "b-easy",
+  "typTerrarium": "naziemne, wilgotne (dwie kryjówki)",
+  "quizLabel": "Quiz i symulator",
+  "hDieta": "Dieta i karmienie",
+  "hLinienie": "Wylinka",
+  "katalog": {
+    "ex": "Najmniejszy afrykański pyton — spokojny, powolny, niejadowity dusiciel. Nocny, popularny u początkujących, ale wymaga wysokiej wilgotności i ciasnych kryjówek.",
+    "hero": "_media/pyton_portret.jpg",
+    "heroAlt": "Pyton królewski",
+    "heroCaption": "Foto: Brian Gratwicke · CC BY 2.0"
+  },
+  "opisHTML": "Najmniejszy z afrykańskich pytonów, pochodzący z sawann, zarośli i widnych lasów Afryki Zachodniej i Środkowej. Nazwa „królewski” (łac. <i>regius</i>) oraz „ball python” bierze się z obronnego zwijania się w ciasną kulę z głową schowaną w środku. Aktywny o zmierzchu i w nocy, naziemny, niejadowity dusiciel. Spokojny i powolny — jeden z najczęściej trzymanych węży, choć bywa wybredny w jedzeniu.",
+  "galeria": [
+    { "src": "_media/pyton_portret.jpg", "alt": "Pyton królewski — portret", "caption": "Foto 1: Brian Gratwicke · CC BY 2.0" },
+    { "src": "_media/pyton_kula.jpg", "alt": "Pyton królewski zwinięty w kulę", "caption": "Foto 2: Seth Cochran · CC0" },
+    { "src": "_media/pyton_coil.jpg", "alt": "Pyton królewski (Python regius)", "caption": "Foto 3: Dirk Vorderstraße · CC BY 2.0" },
+    { "src": "_media/pyton_rock.jpg", "alt": "Pyton królewski na kamieniu", "caption": "Foto 4: Lisaw123 · domena publiczna" },
+    { "src": "_media/pyton_mlody.jpg", "alt": "Młody pyton królewski", "caption": "Foto 5: Michael McConville · CC BY 4.0" },
+    { "src": "_media/pyton_studio.jpg", "alt": "Pyton królewski", "caption": "Foto 6: Tris T7 · CC BY-SA 4.0" }
+  ],
+  "kryjowkiHTML": "Zapewnij dwie ciasne kryjówki — po ciepłej i chłodnej stronie — oraz misę z wodą do moczenia. Pyton królewski czuje się bezpiecznie w zamkniętej, ciasnej kryjówce; jej brak to częsta przyczyna stresu i odmowy jedzenia.",
+  "kryjowkiSrc": ["reptifiles"],
+  "metryczka": [
+    ["Grupa", "wąż (gad)", ["wiki"]],
+    ["Rozmiar", "samice ~120–150 cm, samce mniejsze; maks. ~180 cm", ["petmd", "wiki"]],
+    ["Długość życia", "20–30+ lat w niewoli", ["petmd", "reptifiles"]],
+    ["Typ terrarium", "naziemne, wilgotne; dwie kryjówki (ciepła i chłodna)", ["reptifiles"]],
+    ["Min. wymiary", "długość terrarium ≥ długość węża; dorosły min. 120×60×60 cm (samice), 90×60×60 cm (samce)", ["reptifiles"]],
+    ["Temp. — strefa ciepła", "ciepła strona 31–35°C; punkt grzania do ~40°C", ["reptifiles", "petmd"]],
+    ["Temp. — chłodny kąt", "22–27°C", ["reptifiles", "petmd"]],
+    ["Temp. nocą", "22–26°C", ["reptifiles"]],
+    ["Wilgotność", "55–65% (źródła podają 40–65%); przy wylince do ~70%", ["reptifiles", "petmd"]],
+    ["Podłoże", "trzymające wilgoć (kora/ziemia/kokos); gruba ściółka i kryjówki", ["reptifiles"]],
+    ["Dieta", "wyłącznie całe rozmrożone gryzonie (myszy/szczury); ofiara nie szersza niż wąż w najszerszym miejscu (do ~1,5× szerokości)", ["reptifiles", "petmd"]],
+    ["Karmienie", "młode co ~7 dni, dorosłe co 1–2 tygodnie; nadmiar = otyłość", ["petmd", "reptifiles"]],
+    ["Trudność", "łatwy", ["reptifiles"]]
+  ],
+  "linienie": { "t": "Linieje w całości; młode ~raz w miesiącu, dorosłe kilka razy w roku. Przed wylinką oczy mętnieją (niebiesko-szaro), a skóra matowieje — wtedy podnieś wilgotność (do ~70%), żeby skóra zeszła jednym kawałkiem. Nie odrywaj niezłuszczonej skóry na siłę.", "src": ["petmd", "reptifiles"] },
+  "choroby": { "t": "Najczęstsze: problemy z wylinką (dysecdysis) przy zbyt niskiej wilgotności, infekcje układu oddechowego (za zimno/wilgotno), zapalenie jamy ustnej, roztocza wężowe, oparzenia od grzałek bez termostatu.", "src": ["reptifiles", "petmd"] },
+  "objawyAlarm": { "t": "Świszczący oddech, otwarty pysk i śluz (infekcja oddechowa), długie odmawianie jedzenia z utratą masy, zaleganie wylinki (zwłaszcza na oczach), rany/strupy, drobne ruchome kropki na skórze (roztocza) → weterynarz od zwierząt egzotycznych. Serwis nie stawia diagnoz ani nie podaje leków.", "src": ["reptifiles", "petmd"] },
+  "przepisy": { "t": "CITES: załącznik II; w Unii Europejskiej aneks B rozporządzenia 338/97. W Polsce żywe gady z aneksów A/B podlegają obowiązkowej rejestracji w starostwie powiatowym (art. 64 ustawy o ochronie przyrody) — przy zakupie wymagaj dokumentu legalności pochodzenia. IUCN: bliski zagrożenia (Near Threatened).", "src": ["cites", "gdos", "wiki"] },
+  "bledy": [
+    ["Zbyt niska wilgotność → problemy z wylinką (zaleganie skóry, zwłaszcza na oczach).", ["reptifiles", "petmd"]],
+    ["Grzałka bez termostatu → oparzenia brzucha.", ["reptifiles"]],
+    ["Ofiara szersza niż wąż w najszerszym miejscu → ryzyko zarzucania pokarmu.", ["reptifiles", "petmd"]],
+    ["Za częste karmienie dorosłego węża → otyłość.", ["petmd"]]
+  ],
+  "sim": {
+    "temp": { "min": 31, "max": 35, "abs": [18, 50], "jedn": "°C", "etyk": "Temperatura (strefa ciepła)", "src": ["reptifiles", "petmd"] },
+    "wilg": { "min": 55, "max": 65, "abs": [20, 95], "jedn": "%", "etyk": "Wilgotność (otoczenie)", "src": ["reptifiles", "petmd"] }
+  },
+  "zrodla": {
+    "reptifiles": { "t": "ReptiFiles — Ball Python Care (renomowany poradnik hodowlany)", "u": "https://reptifiles.com/ball-python-care/" },
+    "petmd": { "t": "PetMD — Ball Python Care Sheet (recenzja weterynaryjna)", "u": "https://www.petmd.com/reptile/ball-python-care-sheet" },
+    "wiki": { "t": "Wikipedia — Ball python (fakty ogólne: systematyka, zasięg, biologia, IUCN)", "u": "https://en.wikipedia.org/wiki/Ball_python" },
+    "cites": { "t": "CITES — Checklist (Python regius, załącznik II)", "u": "https://checklist.cites.org/" },
+    "gdos": { "t": "Gov.pl (biznes.gov.pl / GDOŚ) — rejestracja zwierząt z aneksów A/B CITES w starostwie powiatowym (art. 64 ustawy o ochronie przyrody)", "u": "https://www.biznes.gov.pl/pl/firma/zezwolenia-koncesje-wpisy-do-rejestru/chce-uzyskac-zezwolenie-koncesje-wpis-do-rejestru-dzialalnosci-regulowanej54/proc_428-zezwolenie-na-przywoz-do-ue-egzotycznych-okazow-dzikiej-fauny-i-flory---cites" }
+  }
+}

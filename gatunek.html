@@ -74,13 +74,13 @@
       </div>
 
       <div class="block">
-        <h2 class="serif">Dieta i suplementacja</h2>
+        <h2 class="serif" id="h_dieta">Dieta i suplementacja</h2>
         <p id="p_dieta"></p>
-        <div class="callout"><h4>Suplementy</h4><span id="p_supl"></span></div>
+        <div class="callout" id="supl_box"><h4>Suplementy</h4><span id="p_supl"></span></div>
       </div>
 
       <div class="block">
-        <h2 class="serif">Linienie i autotomia ogona</h2>
+        <h2 class="serif" id="h_lin">Linienie i autotomia ogona</h2>
         <p id="p_lin"></p>
         <p id="p_auto"></p>
       </div>
@@ -193,10 +193,18 @@
       return '<li><b>'+k[0]+'</b> '+val(k[1])+' '+zrodlaSup(srcOf(k[1]))+'</li>';
     }).join("");
 
+    // nagłówki sekcji — opcjonalny override z JSON (np. wąż: „Dieta i karmienie", „Wylinka")
+    if (g.hDieta) $('h_dieta').textContent = g.hDieta;
+    if (g.hLinienie) $('h_lin').textContent = g.hLinienie;
+
     $('p_dieta').innerHTML = val('Dieta') + ' ' + zrodlaSup(srcOf('Dieta'));
-    $('p_supl').innerHTML  = val('Suplementacja') + ' ' + zrodlaSup(srcOf('Suplementacja'));
+    // suplementacja — tylko gdy gatunek ma takie pole (węże jedzące całe ofiary nie mają)
+    if (val('Suplementacja')) { $('p_supl').innerHTML = val('Suplementacja') + ' ' + zrodlaSup(srcOf('Suplementacja')); }
+    else { $('supl_box').style.display = 'none'; }
     $('p_lin').innerHTML   = g.linienie.t + ' ' + zrodlaSup(g.linienie.src);
-    $('p_auto').innerHTML  = g.autotomia.t + ' ' + zrodlaSup(g.autotomia.src);
+    // autotomia ogona — opcjonalna (węże nie odrzucają ogona)
+    if (g.autotomia) { $('p_auto').innerHTML = g.autotomia.t + ' ' + zrodlaSup(g.autotomia.src); }
+    else { $('p_auto').style.display = 'none'; }
     $('p_chor').innerHTML  = g.choroby.t + ' ' + zrodlaSup(g.choroby.src);
     $('p_alarm').innerHTML = g.objawyAlarm.t + ' ' + zrodlaSup(g.objawyAlarm.src);
     $('p_prz').innerHTML   = g.przepisy.t + ' ' + zrodlaSup(g.przepisy.src);

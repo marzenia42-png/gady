@@ -121,18 +121,18 @@
 
 <script src="dane.js"></script>
 <script>
-  // Symulator i quiz działają na danych gekona lamparciego z dane/gatunki/ (jedno źródło prawdy)
-  const defs = [['temp','🌡️'],['wilg','💧'],['uvb','☀️']];
-  let S = null;
+  // Symulator — normy wybranego gatunku z dane/gatunki/ (jedno źródło prawdy). Liczba suwaków = liczba norm gatunku.
+  const ICON = { temp:'🌡️', wilg:'💧', uvb:'☀️' };
+  let S = null, SK = [];   // SK = klucze norm obecne u danego gatunku (np. wąż: temp+wilg, bez UVB)
   function okRange(k){const s=S[k],v=+document.getElementById('r_'+k).value;return v>=s.min&&v<=s.max;}
   function sim(){
-    if(!S) return;
-    defs.forEach(([k])=>{document.getElementById('v_'+k).textContent=document.getElementById('r_'+k).value+S[k].jedn;});
-    const score=defs.filter(([k])=>okRange(k)).length;
+    if(!S || !SK.length) return;
+    SK.forEach(function(k){document.getElementById('v_'+k).textContent=document.getElementById('r_'+k).value+S[k].jedn;});
+    const score=SK.filter(okRange).length, total=SK.length;
     const v=document.getElementById('verdict'), c=document.getElementById('crt');
     v.className='verdict';
-    if(score===3){v.classList.add('v-ok');v.textContent='Warunki prawidłowe dla gatunku ✓';c.style.filter='none';c.style.transform='scale(1.05)';}
-    else if(score===2){v.classList.add('v-warn');v.textContent='Warunki do poprawy — sprawdź normy';c.style.filter='saturate(.6)';c.style.transform='scale(1)';}
+    if(score===total){v.classList.add('v-ok');v.textContent='Warunki prawidłowe dla gatunku ✓';c.style.filter='none';c.style.transform='scale(1.05)';}
+    else if(score>=Math.ceil(total/2)){v.classList.add('v-warn');v.textContent='Warunki do poprawy — sprawdź normy';c.style.filter='saturate(.6)';c.style.transform='scale(1)';}
     else{v.classList.add('v-bad');v.textContent='Warunki szkodliwe dla gatunku';c.style.filter='grayscale(.6) brightness(.8)';c.style.transform='scale(.93)';}
   }
   document.querySelectorAll('.tab').forEach(x=>x.onclick=()=>{document.querySelectorAll('.tab').forEach(y=>y.classList.remove('on'));x.classList.add('on');});
@@ -142,18 +142,18 @@
   // lokalny helper przypisów z mapy źródeł DANEGO gatunku (bez globalnego ZRODLA — brak kolizji kluczy między gatunkami)
   function supZ(z, keys){ return (keys||[]).map(function(k){ var e=z&&z[k]; return e?'<a class="refnum" href="'+e.u+'" target="_blank" rel="noopener" title="'+e.t+'">['+k+']</a>':''; }).join(''); }
 
-  // Symulator — normy wybranego gatunku
   loadGatunek(simSlug).then(function(g){
     S = g.sim;
+    SK = Object.keys(S);   // tylko normy, które gatunek faktycznie ma
     document.getElementById('simGat').textContent = g.nazwaPL;
-    document.getElementById('sliders').innerHTML = defs.map(([k,ic])=>{
-      const s=S[k], mid=Math.round((s.min+s.max)/2);
+    document.getElementById('sliders').innerHTML = SK.map(function(k){
+      const s=S[k], ic=ICON[k]||'•', mid=Math.round((s.min+s.max)/2);
       return `<div class="slider"><div class="lab"><span>${ic} ${s.etyk}</span><b id="v_${k}">${mid}${s.jedn}</b></div>
         <input type="range" min="${s.abs[0]}" max="${s.abs[1]}" value="${mid}" id="r_${k}">
         <div class="norm">Norma gatunku: ${s.min}–${s.max}${s.jedn} ${supZ(g.zrodla, s.src)}</div></div>`;
     }).join("");
     document.querySelectorAll('#sliders input[type=range]').forEach(r=>r.addEventListener('input',sim));
-    var simKeys = [...new Set([].concat(S.temp.src||[], S.wilg.src||[], S.uvb.src||[]))];
+    var simKeys = [...new Set([].concat.apply([], SK.map(function(k){ return S[k].src||[]; })))];
     document.getElementById('simLink').innerHTML = '· ' + supZ(g.zrodla, simKeys);
     sim();
   }).catch(function(){

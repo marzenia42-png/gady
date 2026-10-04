@@ -25,6 +25,12 @@
 | `_media/agama_natura.jpg` | Agama brodata w naturze, Australia (karta foto 4) | Chris Lindorff | **CC BY 2.5 AU** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Nitre_bush_and_dragon_from_NatureShare.jpg |
 | `_media/agama_studio.jpg` | Agama brodata (karta foto 5) | George Chernilevsky | **Domena publiczna (PD)** | https://commons.wikimedia.org/wiki/File:Pogona_vitticeps_2009_G1.jpg |
 | `_media/agama_morf.jpg` | Agama brodata — ubarwienie (karta foto 6) | Will Brown | **CC BY 2.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Central_Bearded_Dragon_2_(23084981452).jpg |
+| `_media/pyton_portret.jpg` | Pyton królewski — portret (hero, karta foto 1) | Brian Gratwicke | **CC BY 2.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Python_regius_-_ball_python.jpg |
+| `_media/pyton_kula.jpg` | Pyton królewski zwinięty w kulę (karta foto 2) | Seth Cochran | **CC0** (domena publiczna) | https://commons.wikimedia.org/wiki/File:Ball_Python_(Python_regius).jpg |
+| `_media/pyton_coil.jpg` | Pyton królewski (karta foto 3) | Dirk Vorderstraße | **CC BY 2.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:K%C3%B6nigspython_-_Python_regius_(10569184453).jpg |
+| `_media/pyton_rock.jpg` | Pyton królewski na kamieniu (karta foto 4) | Lisaw123 | **Domena publiczna (PD)** | https://commons.wikimedia.org/wiki/File:Ball_python_and_rock.jpg |
+| `_media/pyton_mlody.jpg` | Młody pyton królewski (karta foto 5) | Michael McConville | **CC BY 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:Juvenile_ball_python.jpg |
+| `_media/pyton_studio.jpg` | Pyton królewski (karta foto 6) | Tris T7 | **CC BY-SA 4.0** (wymaga atrybucji) | https://commons.wikimedia.org/wiki/File:D85_3396_Ball_Python_by_Trisorn_Triboon.jpg |
 
 ## Rekordy i dziwy (sekcja „Rekordy")
 - **Źródła liczb rekordów:** każdy rekord ma link do źródła w `data/rekordy.json` (Guinness World Records, Australian Museum, Natural History Museum, Scientific Reports, Royal Society Open Science, National Geographic, Re:wild). Rozbieżności = zakres.
@@ -75,6 +81,22 @@ Rozbieżność temperatur (ReptiFiles podaje basking 28–29°C, PetMD ~22–24�
 
 Rozbieżność temperatur strefy grzania (ReptiFiles 42–45°C vs PetMD ~38°C) pokazana jako zakres „38–45°C”
 z obydwoma przypisami; w symulatorze norma gatunku 38–45°C. VCA nie użyte — źródłem weterynaryjnym jest PetMD.
+
+**Temperatura nocna agamy (uzupełniona 04.10):** ReptiFiles podaje **55–75°F (12–24°C)** nocą, bez dogrzewania;
+źródło: https://reptifiles.com/bearded-dragon-care/bearded-dragon-temperatures-uvb/ (sekcja Nighttime Temperatures).
+
+### Pyton królewski (Python regius) — źródła liczb i statusu prawnego
+
+| Klucz | Źródło | Zakres danych |
+|---|---|---|
+| `reptifiles` | ReptiFiles — Ball Python Care — https://reptifiles.com/ball-python-care/ | wymiary (dł. terrarium ≥ dł. węża; samice 120×60×60, samce 90×60×60 cm), strefa ciepła 31–35°C / punkt do ~40°C, chłodny kąt, noc, wilgotność 55–65% (wylinka ~70%), podłoże, karmienie, wielkość ofiary |
+| `petmd` | PetMD — Ball Python Care Sheet (recenzja weterynaryjna) — https://www.petmd.com/reptile/ball-python-care-sheet | długość życia (do 30 lat), rozmiar (4–5 ft), temp. ciepła ~35°C / chłodna ~26°C, wilgotność 40–60% (wylinka ~70%), dieta (rozmrożone gryzonie), częstotliwość karmienia, wylinka |
+| `wiki` | Wikipedia — Ball python — https://en.wikipedia.org/wiki/Ball_python | **tylko fakty ogólne:** zasięg (Afryka Zach./Środk.), zwijanie w „kulę”, niejadowity dusiciel, maks. ~182 cm, tryb nocny, IUCN Near Threatened |
+| `cites` | CITES — Checklist (Python regius, załącznik II) — https://checklist.cites.org/ | status międzynarodowy: CITES załącznik II (UE aneks B rozp. 338/97) |
+| `gdos` | Gov.pl (biznes.gov.pl / GDOŚ) — https://www.biznes.gov.pl/pl/firma/zezwolenia-koncesje-wpisy-do-rejestru/chce-uzyskac-zezwolenie-koncesje-wpis-do-rejestru-dzialalnosci-regulowanej54/proc_428-zezwolenie-na-przywoz-do-ue-egzotycznych-okazow-dzikiej-fauny-i-flory---cites | obowiązek rejestracji żywych gadów z aneksów A/B w starostwie powiatowym (art. 64 ustawy o ochronie przyrody) |
+
+Rozbieżność wilgotności (ReptiFiles 55–65% vs PetMD 40–60%) pokazana jako „55–65% (źródła podają 40–65%)”
+z obydwoma przypisami. Temperatura ciepłej strony 31–35°C z punktem grzania do ~40°C (ReptiFiles + PetMD).
 
 ---
 

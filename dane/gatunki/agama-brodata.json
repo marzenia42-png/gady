@@ -36,6 +36,7 @@
     ["Min. wymiary", "dorosły min. 120×60×60 cm (4×2×2 ft); zalecane ≥ 180×60×60 cm", ["reptifiles", "petmd"]],
     ["Temp. — strefa grzania", "38–45°C (powierzchnia wygrzewania)", ["reptifiles", "petmd"]],
     ["Temp. — chłodny kąt", "24–29°C", ["reptifiles", "petmd"]],
+    ["Temp. nocą", "12–24°C (bez dogrzewania; przy prawidłowych temp. dnia bezpieczne spadki nawet do ~10°C)", ["reptifiles"]],
     ["Wilgotność", "30–50% (środowisko suche)", ["reptifiles", "petmd"]],
     ["Oświetlenie UVB", "Ferguson strefa 3–4, UVI ~3–5 w strefie grzania, ~10–12 h", ["reptifiles", "petmd"]],
     ["Podłoże", "dorosłe: twarde/ziemia ubita; luźny piasek u młodych = ryzyko impakcji", ["reptifiles"]],
