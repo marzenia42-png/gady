@@ -118,7 +118,7 @@
   function mv(m,L){ var r=m.find(function(x){return x[0]===L;}); return r?r[1]:""; }
   function karta(g){
     var m=g.katalog||{}, me=g.metryczka||[];
-    var temp = mv(me,'Temp. — strefa ciepła') || mv(me,'Temp. — strefa cieplejsza');
+    var temp = mv(me,'Temp. — strefa ciepła') || mv(me,'Temp. — strefa cieplejsza') || mv(me,'Temp. — powierzchnia wygrzewania') || mv(me,'Temp. — strefa wygrzewania');
     var wilg = (mv(me,'Wilgotność')||'').split(' ')[0];
     var roz  = (mv(me,'Rozmiar')||'').split('(')[0].trim();
     return '<a class="card" href="gatunek.html?id='+encodeURIComponent(g.slug)+'" style="color:inherit">'+

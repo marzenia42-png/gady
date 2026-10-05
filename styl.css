@@ -145,6 +145,7 @@ a{color:var(--moss);text-decoration:none}
 .foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .foot b{color:#eaf1ec;font-family:var(--serif)}
 .foot .credits{font-size:12.5px;color:#8ba393;max-width:52ch}
+.foot .privline{flex-basis:100%;width:100%;border-top:1px solid var(--line-d);margin-top:10px;padding-top:12px;font-size:12px;color:#8ba393}
 
 /* ——— elementy wspólne ——— */
 .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.03em;padding:4px 11px;border-radius:999px}

@@ -59,7 +59,20 @@ document.addEventListener("DOMContentLoaded", function () {
     document.title = ctx ? (order === "prefix" ? (n + " — " + ctx) : (ctx + " — " + n)) : n;
   }
   enhanceNav();
+  addPrivacyLine();
 });
+
+/* Stopka — jedna linia o prywatności na KAŻDEJ stronie (serwis statyczny: brak danych, brak cookies). */
+function addPrivacyLine() {
+  var foots = document.querySelectorAll("footer.foot .wrap");
+  for (var i = 0; i < foots.length; i++) {
+    if (foots[i].querySelector(".privline")) continue;
+    var p = document.createElement("div");
+    p.className = "privline";
+    p.textContent = "Serwis nie zbiera danych osobowych i nie używa cookies.";
+    foots[i].appendChild(p);
+  }
+}
 
 /* NAWIGACJA — jedno źródło treści dla desktopu i telefonu.
    Pozycje górne czytamy z istniejącego <nav class="menu"> (zachowana kolejność/etykiety),

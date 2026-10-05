@@ -161,7 +161,8 @@
     var yt = $('gallery').querySelector('.ytf');
     if (yt) yt.addEventListener('click', function(){
       var id = this.getAttribute('data-yt'), a = this.getAttribute('data-alt');
-      this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1" title="'+a+'" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      // klik-to-load: iframe ładuje się dopiero po kliknięciu, BEZ autoplay (prywatność youtube-nocookie)
+      this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'" title="'+a+'" allow="encrypted-media" referrerpolicy="no-referrer" loading="lazy" allowfullscreen></iframe>';
     });
 
     // opis + kryjówki
@@ -181,13 +182,15 @@
 
     // klimat — buduj tylko z pól, które gatunek faktycznie ma (bez źródła = pomiń)
     var klimat = [
-      ['Strefa ciepła (dzień):', 'Temp. — strefa ciepła'],
-      ['Strefa cieplejsza:',     'Temp. — strefa cieplejsza'],
-      ['Chłodny kąt:',           'Temp. — chłodny kąt'],
-      ['Noc:',                   'Temp. nocą'],
-      ['Maks.:',                 'Maks. temperatura'],
-      ['Wilgotność:',            'Wilgotność'],
-      ['UVB:',                   'Oświetlenie UVB']
+      ['Strefa wygrzewania:',     'Temp. — strefa wygrzewania'],
+      ['Powierzchnia wygrzewania:','Temp. — powierzchnia wygrzewania'],
+      ['Strefa ciepła (dzień):',  'Temp. — strefa ciepła'],
+      ['Strefa cieplejsza:',      'Temp. — strefa cieplejsza'],
+      ['Chłodny kąt:',            'Temp. — chłodny kąt'],
+      ['Noc:',                    'Temp. nocą'],
+      ['Maks.:',                  'Maks. temperatura'],
+      ['Wilgotność:',             'Wilgotność'],
+      ['UVB:',                    'Oświetlenie UVB']
     ];
     $('l_klimat').innerHTML = klimat.filter(function(k){ return val(k[1]); }).map(function(k){
       return '<li><b>'+k[0]+'</b> '+val(k[1])+' '+zrodlaSup(srcOf(k[1]))+'</li>';

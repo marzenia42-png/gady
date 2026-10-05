@@ -95,9 +95,24 @@ z obydwoma przypisami; w symulatorze norma gatunku 38–45°C. VCA nie użyte �
 | `cites` | CITES — Checklist (Python regius, załącznik II) — https://checklist.cites.org/ | status międzynarodowy: CITES załącznik II (UE aneks B rozp. 338/97) |
 | `gdos` | Gov.pl (biznes.gov.pl / GDOŚ) — https://www.biznes.gov.pl/pl/firma/zezwolenia-koncesje-wpisy-do-rejestru/chce-uzyskac-zezwolenie-koncesje-wpis-do-rejestru-dzialalnosci-regulowanej54/proc_428-zezwolenie-na-przywoz-do-ue-egzotycznych-okazow-dzikiej-fauny-i-flory---cites | obowiązek rejestracji żywych gadów z aneksów A/B w starostwie powiatowym (art. 64 ustawy o ochronie przyrody) |
 
-Rozbieżność wilgotności (ReptiFiles 55–65% vs PetMD 40–60%) pokazana jako jeden zakres **40–65%**
-(suma obu źródeł) z obydwoma przypisami — ta sama wartość na karcie i w symulatorze (obie z JSON-a,
-pole `metryczka` Wilgotność i `sim.wilg`). Temperatura ciepłej strony 31–35°C z punktem grzania do ~40°C.
+Wilgotność: podajemy **wyłącznie wartość dosłownie podaną przez źródło** — **55–65% (ReptiFiles,
+sekcja „Humidity")**, jeden przypis. Nie sumujemy zakresów różnych źródeł (poprzednie „40–65%" =
+suma ReptiFiles+PetMD było odrzucone 05.10 — żadne źródło nie podaje tej liczby). Ta sama wartość
+na karcie (`metryczka` Wilgotność) i w symulatorze (`sim.wilg`), obie z JSON-a.
+Temperatura ciepłej strony 31–35°C z punktem grzania do ~40°C.
+
+### Gekon lamparci — temperatura rozbita na osobne, dosłowne wartości (05.10)
+
+Poprzednie „28–36°C" było sklejką dwóch źródeł. Rozbite na pojedyncze wartości, każda z jednym źródłem:
+
+| Wartość | Liczba | Źródło (URL + sekcja) |
+|---|---|---|
+| Strefa wygrzewania (powietrze) | 28–30°C | RSPCA — Leopard gecko (sekcja „Temperature") — https://www.rspca.org.uk/adviceandwelfare/pets/other/leopardgecko |
+| Powierzchnia wygrzewania | 34–36°C (94–97°F) | ReptiFiles — Temperatures & Humidity — https://reptifiles.com/leopard-gecko-care/leopard-gecko-temperatures-humidity/ |
+| Chłodny kąt | 21–25°C (70–77°F) | ReptiFiles — Temperatures & Humidity (jw.) |
+| Noc | spadek tolerowany do 16°C (60°F) | ReptiFiles — Temperatures & Humidity (jw.) |
+
+Symulator gekona: norma = powierzchnia wygrzewania 34–36°C (ReptiFiles), z JSON `sim.temp`.
 
 ---
 

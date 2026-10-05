@@ -39,7 +39,7 @@
     ["Temp. — strefa ciepła", "ciepła strona 31–35°C; punkt grzania do ~40°C", ["reptifiles", "petmd"]],
     ["Temp. — chłodny kąt", "22–27°C", ["reptifiles", "petmd"]],
     ["Temp. nocą", "22–26°C", ["reptifiles"]],
-    ["Wilgotność", "40–65% (przy wylince do ~70%)", ["reptifiles", "petmd"]],
+    ["Wilgotność", "55–65% (przy wylince do ~70%)", ["reptifiles_hum"]],
     ["Podłoże", "trzymające wilgoć (kora/ziemia/kokos); gruba ściółka i kryjówki", ["reptifiles"]],
     ["Dieta", "wyłącznie całe rozmrożone gryzonie (myszy/szczury); ofiara nie szersza niż wąż w najszerszym miejscu (do ~1,5× szerokości)", ["reptifiles", "petmd"]],
     ["Karmienie", "młode co ~7 dni, dorosłe co 1–2 tygodnie; nadmiar = otyłość", ["petmd", "reptifiles"]],
@@ -57,10 +57,11 @@
   ],
   "sim": {
     "temp": { "min": 31, "max": 35, "abs": [18, 50], "jedn": "°C", "etyk": "Temperatura (strefa ciepła)", "src": ["reptifiles", "petmd"] },
-    "wilg": { "min": 40, "max": 65, "abs": [20, 95], "jedn": "%", "etyk": "Wilgotność (otoczenie)", "src": ["reptifiles", "petmd"] }
+    "wilg": { "min": 55, "max": 65, "abs": [20, 95], "jedn": "%", "etyk": "Wilgotność (otoczenie)", "src": ["reptifiles_hum"] }
   },
   "zrodla": {
     "reptifiles": { "t": "ReptiFiles — Ball Python Care (renomowany poradnik hodowlany)", "u": "https://reptifiles.com/ball-python-care/" },
+    "reptifiles_hum": { "t": "ReptiFiles — Ball Python Care (sekcja „Humidity”: 55–65%)", "u": "https://reptifiles.com/ball-python-care/" },
     "petmd": { "t": "PetMD — Ball Python Care Sheet (recenzja weterynaryjna)", "u": "https://www.petmd.com/reptile/ball-python-care-sheet" },
     "wiki": { "t": "Wikipedia — Ball python (fakty ogólne: systematyka, zasięg, biologia, IUCN)", "u": "https://en.wikipedia.org/wiki/Ball_python" },
     "cites": { "t": "CITES — Checklist (Python regius, załącznik II)", "u": "https://checklist.cites.org/" },
